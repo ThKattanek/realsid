@@ -1,0 +1,13 @@
+realSID
+-------
+
+Ein Projekt von Thorsten Kattanek.
+Dies ist ein Projekt welches versucht, mittels Studium eines Realen SID's des C64, eine nahezu
+perfekte Emulation hinzubekommen. Der SID wird komplett in einer Klasse gekapsellt so das er auch
+in anderen Projekten eingesetzt werden kann. Als Framework benutze ich Qt, dieses ist für Windows,
+Linux und Mac verfügbar.
+
+Wie genau ich das hinbekomme steht noch in den Sternen, aber ich versuche alles so gut wie es geht zu
+Dokumentieren.
+
+Let's Go ---> C64 rulez
