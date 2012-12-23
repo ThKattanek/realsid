@@ -1,2 +1,2 @@
 screenshot
-![screenshot](http://dl.dropbox.com/u/20714377/pacmixer2.png)
+![screenshot](http://www.emu64-projekt.de/Files/realSID_0.png)
