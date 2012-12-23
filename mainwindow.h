@@ -26,8 +26,7 @@ private:
 
     Ui::MainWindow *ui;
     SDL_Surface *WaveOut;
-    double *SoundBufferL;
-    double *SoundBufferR;
+    double *SoundBuffer;
 };
 
 #endif // MAINWINDOW_H

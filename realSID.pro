@@ -10,9 +10,11 @@ TARGET = realSID
 TEMPLATE = app
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    sidclass.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    sidclass.h
 
 FORMS    += mainwindow.ui
 
@@ -38,3 +40,5 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
+
