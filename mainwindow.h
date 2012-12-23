@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: mainwindow.h                          //
+//						//
+// Dieser Sourcecode ist Copyright geschützt!   //
+// Geistiges Eigentum von Th.Kattanek		//
+//						//
+// Letzte Änderung am 23.12.2012		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -6,6 +21,8 @@
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_gfxPrimitives.h>
+
+#include <sidclass.h>
 
 namespace Ui {
     class MainWindow;
@@ -23,10 +40,10 @@ public:
 private:
 
     void DrawWaveOut(void);
-
     Ui::MainWindow *ui;
     SDL_Surface *WaveOut;
-    double *SoundBuffer;
+
+    SIDClass *sid;
 };
 
 #endif // MAINWINDOW_H

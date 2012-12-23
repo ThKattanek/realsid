@@ -1,11 +1,26 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: mainwindow.cpp                        //
+//						//
+// Dieser Sourcecode ist Copyright geschützt!   //
+// Geistiges Eigentum von Th.Kattanek		//
+//						//
+// Letzte Änderung am 23.12.2012		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
 #define SAMPLERATE 44100
-#define PUFFERSIZE 882
+#define PUFFERSIZE 882*2
 
-#define WaveOutXW (882/3)
-#define WaveOutYW (400/3)
+#define WaveOutXW 200
+#define WaveOutYW 100
 
 void AudioMix(void *userdata, Uint8 *stream, int laenge);
 
@@ -34,17 +49,16 @@ MainWindow::MainWindow(QWidget *parent) :
 
     SDL_WM_SetCaption("Wave Output [SDL]",0);
 
-    SoundBuffer = new double(PUFFERSIZE);
+    sid = new SIDClass(SAMPLERATE,PUFFERSIZE);
 
     /// SLD Audio Installieren ///
     SDL_AudioSpec format;
     format.freq = SAMPLERATE;
     format.format = AUDIO_S16;
     format.channels = 1;
-    format.samples = PUFFERSIZE*2;
+    format.samples = PUFFERSIZE;
     format.userdata = this;
     format.callback = AudioMix;
-    format.userdata = this;
 
     if(SDL_OpenAudio(&format,NULL) < 0)
     {
@@ -61,9 +75,7 @@ MainWindow::~MainWindow()
 {
     SDL_CloseAudio();
     SDL_FreeSurface(WaveOut);
-
-    delete SoundBuffer;
-
+    delete sid;
     delete ui;
 }
 
@@ -75,6 +87,21 @@ void AudioMix(void *userdata, Uint8 *stream, int laenge)
 
 void MainWindow::AudioLoop(short* stream, int laenge)
 {
+    sid->ResetSoundPufferPos();
+
+    while(sid->GetSoundPufferPos() < (laenge/2))
+    {
+        sid->OneCycle();
+    }
+
+    unsigned short *SoundPuffer = (unsigned short*)stream;
+    float *SidPuffer = sid->GetSoundPuffer();
+
+    for(int i=0; i<(laenge/2);i++)
+    {
+        SoundPuffer[i] = (unsigned short)(SidPuffer[i] * 10256);
+    }
+
     DrawWaveOut();
 }
 
@@ -86,15 +113,15 @@ void MainWindow::DrawWaveOut(void)
     // X-Achse
     hlineColor(WaveOut,0,WaveOutXW,WaveOutYW/2,0xe0e000d0);
 
-    double puffer_pos_add = PUFFERSIZE / WaveOutXW;
-    double puffer_pos = 0;
+    float puffer_pos_add = PUFFERSIZE/2 / (WaveOutXW);
+    float puffer_pos = 0;
 
     int AktY = 0;
-    int OldY = SoundBuffer[0]*-1 * WaveOutYW/2 + WaveOutYW/2;
+    int OldY = sid->SoundPuffer[0]*-1 * WaveOutYW/2 + WaveOutYW/2;
     for (int i=0;i<WaveOutXW;i++)
     {
-        AktY = SoundBuffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
-        aalineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
+        AktY = sid->SoundPuffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
+        lineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
 
         OldY = AktY;
         puffer_pos += puffer_pos_add;
