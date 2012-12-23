@@ -26,9 +26,12 @@ void AudioMix(void *userdata, Uint8 *stream, int laenge);
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    WaveOut(NULL),
+    NoDrawingWaveOut(true)
 {
     ui->setupUi(this);
+
 
     int ret = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     if(ret < 0)
@@ -37,17 +40,6 @@ MainWindow::MainWindow(QWidget *parent) :
         QApplication::exit(-1);
         return;
     }
-
-    WaveOut = 0;
-    WaveOut = SDL_SetVideoMode(WaveOutXW,WaveOutYW,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
-    if(WaveOut == 0)
-    {
-        QMessageBox::critical(0,"SDL Fehler","Fehler beim setzen des WaveOut Fensters.");
-        QApplication::exit(-1);
-        return;
-    }
-
-    SDL_WM_SetCaption("Wave Output [SDL]",0);
 
     sid = new SIDClass(SAMPLERATE,PUFFERSIZE);
 
@@ -73,8 +65,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    ShowWaveOut(false);
     SDL_CloseAudio();
-    SDL_FreeSurface(WaveOut);
+
     delete sid;
     delete ui;
 }
@@ -101,12 +94,54 @@ void MainWindow::AudioLoop(short* stream, int laenge)
     {
         SoundPuffer[i] = (unsigned short)(SidPuffer[i] * 10256);
     }
-
     DrawWaveOut();
+}
+
+void MainWindow::ShowWaveOut(bool enabled)
+{
+    if((enabled == true) && (WaveOut == NULL))
+    {
+        WaveOut = SDL_SetVideoMode(WaveOutXW,WaveOutYW,32, SDL_HWSURFACE | SDL_DOUBLEBUF);
+        if(WaveOut == 0)
+        {
+            QMessageBox::critical(0,"SDL Fehler","Fehler beim setzen des WaveOut Fensters.");
+            QApplication::exit(-1);
+            return;
+        }
+        else
+        {
+            SDL_WM_SetCaption("Wave Output [SDL]",0);
+            NoDrawingWaveOut = false;
+        }
+
+    }
+    else
+    {
+        if(WaveOut != NULL)
+        {
+            DrawingWaveOut = true;
+            NoDrawingWaveOut = true;
+
+            while(DrawingWaveOut)
+            {
+                SDL_Delay(1);
+            };
+
+            SDL_FreeSurface(WaveOut);
+            SDL_QuitSubSystem(SDL_INIT_VIDEO);
+            WaveOut = NULL;
+        }
+    }
 }
 
 void MainWindow::DrawWaveOut(void)
 {
+    if(NoDrawingWaveOut)
+    {
+        DrawingWaveOut = false;
+        return;
+    }
+
     // Hintergrund füllen und somit alte Anzeige löschen //
     SDL_FillRect(WaveOut,0,0x00002000);
 
@@ -121,7 +156,7 @@ void MainWindow::DrawWaveOut(void)
     for (int i=0;i<WaveOutXW;i++)
     {
         AktY = sid->SoundPuffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
-        lineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
+        aalineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
 
         OldY = AktY;
         puffer_pos += puffer_pos_add;
@@ -129,4 +164,9 @@ void MainWindow::DrawWaveOut(void)
 
     rectangleColor(WaveOut,0,0,WaveOutXW,WaveOutYW-1,0xFFFFFF90);
     SDL_Flip(WaveOut);
+}
+
+void MainWindow::on_checkBox_clicked(bool checked)
+{
+    ShowWaveOut(checked);
 }

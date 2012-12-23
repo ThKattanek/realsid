@@ -36,12 +36,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void AudioLoop(short int *stream, int laenge);
+    void ShowWaveOut(bool enabled);
+
+private slots:
+    void on_checkBox_clicked(bool checked);
 
 private:
-
     void DrawWaveOut(void);
     Ui::MainWindow *ui;
     SDL_Surface *WaveOut;
+
+    bool DrawingWaveOut;
+    bool NoDrawingWaveOut;
 
     SIDClass *sid;
 };
