@@ -11,15 +11,18 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    sidclass.cpp
+    sidclass.cpp \
+    oscclass.cpp
 
 HEADERS  += mainwindow.h \
-    sidclass.h
+    sidclass.h \
+    oscclass.h
 
 FORMS    += mainwindow.ui
 
 OTHER_FILES += \
-    liesmich.txt
+    liesmich.txt \
+    SID-Artikel.odt
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -40,5 +43,8 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
+
+
 
 

@@ -50,7 +50,7 @@ int SIDClass::GetSoundPufferPos()
 
 void SIDClass::OneCycle()
 {
-    Wert += 0.00003f;
+    Wert += 0.00066f;
     if(Wert >= 0.5f) Wert-=0.5f;
 
     FreqConvCounter+=FreqConvAddWert;
