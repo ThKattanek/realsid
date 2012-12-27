@@ -5,16 +5,17 @@
 //                                              //
 // #file: main.cpp                              //
 //						//
-// Dieser Sourcecode ist Copyright geschützt!   //
-// Geistiges Eigentum von Th.Kattanek		//
+// Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 23.12.2012		//
+// Letzte Änderung am 27.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
 
 #include <QtGui/QApplication>
 #include "mainwindow.h"
+
+#undef main
 
 int main(int argc, char *argv[])
 {

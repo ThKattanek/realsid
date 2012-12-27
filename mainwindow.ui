@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>471</width>
+    <height>383</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>realSID</string>
+   <string>realSID MOS-8580R5</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>310</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -27,13 +27,190 @@
      <string>Wave Anzeige</string>
     </property>
    </widget>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>451</width>
+      <height>291</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="voice0">
+     <attribute name="title">
+      <string>Voice 1</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>421</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Oszillator</string>
+      </property>
+      <widget class="QLabel" name="label_1">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>52</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Freq.Lo</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>52</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Freq.Hi</string>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Freq0Lo">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>291</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Freq0Hi">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>50</y>
+         <width>291</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Freq0Lo_Out">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>30</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="Freq0Hi_Out">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>50</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Tri0">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Dreieck</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Saw0">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sägezahn</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Pul0">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rechteck</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="Nse0">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>70</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Rauschen</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="voice1">
+     <attribute name="title">
+      <string>Voice 2</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="voice2">
+     <attribute name="title">
+      <string>Voice 3</string>
+     </attribute>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>471</width>
      <height>20</height>
     </rect>
    </property>

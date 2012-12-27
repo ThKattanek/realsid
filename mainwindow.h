@@ -5,10 +5,9 @@
 //                                              //
 // #file: mainwindow.h                          //
 //						//
-// Dieser Sourcecode ist Copyright geschützt!   //
-// Geistiges Eigentum von Th.Kattanek		//
+// Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 23.12.2012		//
+// Letzte Änderung am 27.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -40,6 +39,18 @@ public:
 
 private slots:
     void on_checkBox_clicked(bool checked);
+
+    void on_Freq0Lo_valueChanged(int value);
+
+    void on_Freq0Hi_valueChanged(int value);
+
+    void on_Tri0_clicked();
+
+    void on_Saw0_clicked();
+
+    void on_Pul0_clicked();
+
+    void on_Nse0_clicked();
 
 private:
     void DrawWaveOut(void);

@@ -5,10 +5,9 @@
 //                                              //
 // #file: mainwindow.cpp                        //
 //						//
-// Dieser Sourcecode ist Copyright geschützt!   //
-// Geistiges Eigentum von Th.Kattanek		//
+// Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 23.12.2012		//
+// Letzte Änderung am 27.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -92,7 +91,7 @@ void MainWindow::AudioLoop(short* stream, int laenge)
 
     for(int i=0; i<(laenge/2);i++)
     {
-        SoundPuffer[i] = (unsigned short)(SidPuffer[i] * 10256);
+        SoundPuffer[i] = (unsigned short)(SidPuffer[i]* 0.1f * 32766);
     }
     DrawWaveOut();
 }
@@ -152,10 +151,11 @@ void MainWindow::DrawWaveOut(void)
     float puffer_pos = 0;
 
     int AktY = 0;
-    int OldY = sid->SoundPuffer[0]*-1 * WaveOutYW/2 + WaveOutYW/2;
+    float *sid_puffer = sid->GetSoundPuffer();
+    int OldY = sid_puffer[0]*-1 * WaveOutYW/2 + WaveOutYW/2;
     for (int i=0;i<WaveOutXW;i++)
     {
-        AktY = sid->SoundPuffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
+        AktY = sid_puffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
         aalineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
 
         OldY = AktY;
@@ -169,4 +169,64 @@ void MainWindow::DrawWaveOut(void)
 void MainWindow::on_checkBox_clicked(bool checked)
 {
     ShowWaveOut(checked);
+}
+
+void MainWindow::on_Freq0Lo_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq0Lo_Out->setText(str00);
+    sid->WriteIO(0,wert);
+}
+
+void MainWindow::on_Freq0Hi_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq0Hi_Out->setText(str00);
+    sid->WriteIO(1,wert);
+}
+
+void MainWindow::on_Tri0_clicked()
+{
+    unsigned char wave = 0;
+    if(ui->Tri0->isChecked()) wave |= 16;
+    if(ui->Saw0->isChecked()) wave |= 32;
+    if(ui->Pul0->isChecked()) wave |= 64;
+    if(ui->Nse0->isChecked()) wave |= 128;
+    sid->WriteIO(4,wave);
+}
+
+void MainWindow::on_Saw0_clicked()
+{
+    unsigned char wave = 0;
+    if(ui->Tri0->isChecked()) wave |= 16;
+    if(ui->Saw0->isChecked()) wave |= 32;
+    if(ui->Pul0->isChecked()) wave |= 64;
+    if(ui->Nse0->isChecked()) wave |= 128;
+    sid->WriteIO(4,wave);
+}
+
+void MainWindow::on_Pul0_clicked()
+{
+    unsigned char wave = 0;
+    if(ui->Tri0->isChecked()) wave |= 16;
+    if(ui->Saw0->isChecked()) wave |= 32;
+    if(ui->Pul0->isChecked()) wave |= 64;
+    if(ui->Nse0->isChecked()) wave |= 128;
+    sid->WriteIO(4,wave);
+}
+
+void MainWindow::on_Nse0_clicked()
+{
+    unsigned char wave = 0;
+    if(ui->Tri0->isChecked()) wave |= 16;
+    if(ui->Saw0->isChecked()) wave |= 32;
+    if(ui->Pul0->isChecked()) wave |= 64;
+    if(ui->Nse0->isChecked()) wave |= 128;
+    sid->WriteIO(4,wave);
 }
