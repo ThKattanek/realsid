@@ -17,6 +17,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QFileDialog>
 
 #include <SDL/SDL.h>
 #include <SDL/SDL_gfxPrimitives.h>
@@ -51,6 +52,12 @@ private slots:
     void on_Pul0_clicked();
 
     void on_Nse0_clicked();
+
+    void on_Open_SidDump_triggered();
+
+    void on_Play_SidDump_triggered();
+
+    void on_Stop_SidDump_triggered();
 
 private:
     void DrawWaveOut(void);

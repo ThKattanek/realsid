@@ -230,3 +230,23 @@ void MainWindow::on_Nse0_clicked()
     if(ui->Nse0->isChecked()) wave |= 128;
     sid->WriteIO(4,wave);
 }
+
+void MainWindow::on_Open_SidDump_triggered()
+{
+    QString filename = QFileDialog::getOpenFileName(this,tr("Emu64 SID Dump öffnen "),"",tr("Emu64 SID Dump Datei") + "(*.sdp);;" + tr("Alle Dateien") + "(*.*)");
+    if(filename != "")
+    {
+        if(!sid->OpenSIDDump(filename.toAscii().data()))
+            QMessageBox::warning(this,"realSID Error !","Fehler beim öffnen des SID Dump Files.");
+    }
+}
+
+void MainWindow::on_Play_SidDump_triggered()
+{
+    sid->PlaySIDDump();
+}
+
+void MainWindow::on_Stop_SidDump_triggered()
+{
+    sid->StopSIDDump();
+}

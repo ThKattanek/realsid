@@ -12,17 +12,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     sidclass.cpp \
-    oscclass.cpp
+    oscclass.cpp \
+    siddump.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
-    oscclass.h
+    oscclass.h \
+    siddump.h
 
 FORMS    += mainwindow.ui
 
 OTHER_FILES += \
     liesmich.txt \
-    SID-Artikel.odt
+    SID-Artikel.odt \
+    referenz/dane-crest-mos-8580r5.ogg \
+    referenz/dane-crest.sdp
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -43,6 +47,10 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
+
+
+
 
 
 

@@ -214,6 +214,15 @@
      <height>20</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuImport">
+    <property name="title">
+     <string>SID Dump</string>
+    </property>
+    <addaction name="Open_SidDump"/>
+    <addaction name="Play_SidDump"/>
+    <addaction name="Stop_SidDump"/>
+   </widget>
+   <addaction name="menuImport"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -224,6 +233,26 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="Open_SidDump">
+   <property name="text">
+    <string>Emu64 SID Dump File laden (*.sdp)</string>
+   </property>
+  </action>
+  <action name="actionBeenden">
+   <property name="text">
+    <string>Beenden</string>
+   </property>
+  </action>
+  <action name="Play_SidDump">
+   <property name="text">
+    <string>SID Dump abspielen</string>
+   </property>
+  </action>
+  <action name="Stop_SidDump">
+   <property name="text">
+    <string>SID Dump anhalten</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

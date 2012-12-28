@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 28.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -17,7 +17,7 @@
 OSCClass::OSCClass()
 {
     FrequenzAdd = 0;
-    WaveForm = 2;
+    WaveForm = 0;
 }
 
 OSCClass::~OSCClass()
@@ -45,18 +45,20 @@ unsigned short OSCClass::GetOutput()
 {
     if(WaveForm == 0) return 0;
 
-    unsigned short wave = 0x0000;
-
-    if(WaveForm & 1)    // Dreieck
+    switch(WaveForm)
     {
-        if(FrequenzCounterMSB) wave |= (~FrequenzCounter>>11)&0xFFF;
-        else wave |= (FrequenzCounter>>11)&0xFFF;
+    case 0:
+        return 0;
+        break;
+    case 1:
+        if(FrequenzCounterMSB) return (~FrequenzCounter>>11)&0xFFF;
+        else return (FrequenzCounter>>11)&0xFFF;
+        break;
+    case 2:
+        return FrequenzCounter>>12;
+        break;
+    default:
+        return FrequenzCounter>>12;
+        break;
     }
-
-    if(WaveForm & 2)    // Sägezahn
-    {
-        wave |= FrequenzCounter>>12;
-    }
-
-    return wave;
 }
