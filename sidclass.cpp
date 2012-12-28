@@ -57,12 +57,20 @@ int SIDClass::GetSoundPufferPos()
 void SIDClass::OneCycle()
 {
     OSC[0]->OneCycle();
+    OSC[1]->OneCycle();
+    OSC[2]->OneCycle();
 
     FreqConvCounter += FreqConvAddWert;
     if(FreqConvCounter >= 1.0f)
     {
         FreqConvCounter-=(double)1.0;
-        SoundPuffer[SoundPufferPos++] = (float(OSC[0]->GetOutput())/(float)0xFFF)*2.0f-1.0f;
+
+        float mixer = float(OSC[0]->GetOutput())/(float)0xFFF;
+        mixer += float(OSC[1]->GetOutput())/(float)0xFFF;
+        mixer += float(OSC[2]->GetOutput())/(float)0xFFF;
+        mixer /= 3.0f;
+
+        SoundPuffer[SoundPufferPos++] = mixer;
     }
 
     /// SIDDump Klasse vom Emu64 für Testzwecke ///
@@ -82,10 +90,25 @@ void SIDClass::Reset()
     Freq1Hi = 0;
     Freq2Lo = 0;
     Freq2Hi = 0;
+    Puls0Lo = 0;
+    Puls0Hi = 0;
+    Puls1Lo = 0;
+    Puls1Hi = 0;
+    Puls2Lo = 0;
+    Puls2Hi = 0;
+    Ctrl0 = 0;
+    Ctrl1 = 0;
+    Ctrl2 = 0;
+
+    OSC[0]->Reset();
+    OSC[1]->Reset();
+    OSC[2]->Reset();
 }
 
 void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
 {
+    IO[adresse & 31] = wert;
+
     switch(adresse & 0x1F)
     {
     case 0: // Oszillatorfrequenz LoByte Stimme 1
@@ -96,9 +119,17 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
         Freq0Hi = wert;
         OSC[0]->SetFrequenz((Freq0Hi<<8)|Freq0Lo);
         break;
+    case 2: // Pulsweite LoByte Stimme 1
+        Puls0Lo = wert;
+        OSC[0]->SetPulesCompare((Puls0Hi<<8)|Puls0Lo);
+        break;
+    case 3: // Pulsweite HiByte Stimme 1
+        Puls0Hi = wert;
+        OSC[0]->SetPulesCompare((Puls0Hi<<8)|Puls0Lo);
+        break;
     case 4: // Steuerregister Stimme 1
         Ctrl0 = wert;
-        OSC[0]->SetWaveForm(Ctrl0>>4);
+        OSC[0]->SetControlBits(Ctrl0);
         break;
     case 7: // Oszillatorfrequenz LoByte Stimme 2
         Freq1Lo = wert;
@@ -108,9 +139,17 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
         Freq1Hi = wert;
         OSC[1]->SetFrequenz((Freq1Hi<<8)|Freq1Lo);
         break;
+    case 9: // Pulsweite LoByte Stimme 2
+        Puls1Lo = wert;
+        OSC[1]->SetPulesCompare((Puls1Hi<<8)|Puls1Lo);
+        break;
+    case 10: // Pulsweite HiByte Stimme 2
+        Puls1Hi = wert;
+        OSC[1]->SetPulesCompare((Puls1Hi<<8)|Puls1Lo);
+        break;
     case 11: // Steuerregister Stimme 2
         Ctrl1 = wert;
-        OSC[1]->SetWaveForm(Ctrl1>>4);
+        OSC[1]->SetControlBits(Ctrl1);
         break;
     case 14: // Oszillatorfrequenz LoByte Stimme 3
         Freq2Lo = wert;
@@ -120,9 +159,17 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
         Freq2Hi = wert;
         OSC[2]->SetFrequenz((Freq2Hi<<8)|Freq2Lo);
         break;
+    case 16: // Pulsweite LoByte Stimme 3
+        Puls2Lo = wert;
+        OSC[2]->SetPulesCompare((Puls2Hi<<8)|Puls2Lo);
+        break;
+    case 17: // Pulsweite HiByte Stimme 3
+        Puls2Hi = wert;
+        OSC[2]->SetPulesCompare((Puls2Hi<<8)|Puls2Lo);
+        break;
     case 18: // Steuerregister Stimme 3
         Ctrl2 = wert;
-        OSC[2]->SetWaveForm(Ctrl2>>4);
+        OSC[2]->SetControlBits(Ctrl2);
         break;
     default:
         break;
@@ -142,4 +189,16 @@ void SIDClass::PlaySIDDump()
 void SIDClass::StopSIDDump()
 {
     IODump->StopDump();
+}
+
+bool SIDClass::CheckMultiWave()
+{
+    return OSC[0]->MultiWave | OSC[1]->MultiWave | OSC[2]->MultiWave;
+}
+
+void SIDClass::ResetMultiWave()
+{
+    OSC[0]->MultiWave = false;
+    OSC[1]->MultiWave = false;
+    OSC[2]->MultiWave = false;
 }

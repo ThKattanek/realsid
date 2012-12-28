@@ -31,6 +31,8 @@ public:
     bool OpenSIDDump(char *filename);
     void PlaySIDDump(void);
     void StopSIDDump(void);
+    bool CheckMultiWave(void);
+    void ResetMultiWave(void);
 
 private:
     void Reset(void);
@@ -54,6 +56,12 @@ private:
     unsigned char   Freq1Hi;
     unsigned char   Freq2Lo;
     unsigned char   Freq2Hi;
+    unsigned char   Puls0Lo;
+    unsigned char   Puls0Hi;
+    unsigned char   Puls1Lo;
+    unsigned char   Puls1Hi;
+    unsigned char   Puls2Lo;
+    unsigned char   Puls2Hi;
     unsigned char   Ctrl0;
     unsigned char   Ctrl1;
     unsigned char   Ctrl2;

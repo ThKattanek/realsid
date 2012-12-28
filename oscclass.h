@@ -20,15 +20,23 @@ class OSCClass
 public:
     OSCClass();
     ~OSCClass();
+    void Reset(void);
     void OneCycle(void);
     void SetFrequenz(unsigned short frequenz);
-    void SetWaveForm(unsigned char waveform);
+    void SetControlBits(unsigned char ctrlbits);
+    void SetPulesCompare(unsigned short pulsecompare);
     unsigned short GetOutput(void);
+
+    bool MultiWave;
 
 private:
     unsigned long   FrequenzCounter;
+    unsigned long   FrequenzCounterOld;
+    unsigned long   ShiftRegister;
+    unsigned long   TMP0;
     bool            FrequenzCounterMSB;
     unsigned short  FrequenzAdd;
+    unsigned short  PulseCompare;
     unsigned char   WaveForm;
 };
 

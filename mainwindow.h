@@ -59,6 +59,14 @@ private slots:
 
     void on_Stop_SidDump_triggered();
 
+    void on_Check_MultiWave_clicked();
+
+    void on_Reset_MultiWave_clicked();
+
+    void on_Puls0Lo_valueChanged(int value);
+
+    void on_Puls0Hi_valueChanged(int value);
+
 private:
     void DrawWaveOut(void);
     Ui::MainWindow *ui;
