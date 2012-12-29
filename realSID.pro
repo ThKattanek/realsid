@@ -18,7 +18,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     sidclass.h \
     oscclass.h \
-    siddump.h
+    siddump.h \
+    waves.h
 
 FORMS    += mainwindow.ui
 
@@ -26,7 +27,8 @@ OTHER_FILES += \
     liesmich.txt \
     SID-Artikel.odt \
     referenz/dane-crest-mos-8580r5.ogg \
-    referenz/dane-crest.sdp
+    referenz/dane-crest.sdp \
+    sid-wave-capture.asm
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -47,6 +49,8 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
+
 
 
 

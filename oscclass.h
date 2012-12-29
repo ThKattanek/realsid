@@ -7,13 +7,15 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 29.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
 
 #ifndef OSCCLASS_H
 #define OSCCLASS_H
+
+#include <waves.h>
 
 class OSCClass
 {
@@ -27,14 +29,11 @@ public:
     void SetPulesCompare(unsigned short pulsecompare);
     unsigned short GetOutput(void);
 
-    bool MultiWave;
-
 private:
     unsigned long   FrequenzCounter;
     unsigned long   FrequenzCounterOld;
     unsigned long   ShiftRegister;
-    unsigned long   TMP0;
-    bool            FrequenzCounterMSB;
+    unsigned long   Bit0;
     unsigned short  FrequenzAdd;
     unsigned short  PulseCompare;
     unsigned char   WaveForm;
