@@ -42,30 +42,20 @@ private slots:
     void on_checkBox_clicked(bool checked);
 
     void on_Freq0Lo_valueChanged(int value);
-
     void on_Freq0Hi_valueChanged(int value);
-
+    void on_Puls0Lo_valueChanged(int value);
+    void on_Puls0Hi_valueChanged(int value);
     void on_Tri0_clicked();
-
     void on_Saw0_clicked();
-
     void on_Pul0_clicked();
-
     void on_Nse0_clicked();
 
     void on_Open_SidDump_triggered();
-
     void on_Play_SidDump_triggered();
-
     void on_Stop_SidDump_triggered();
 
-    void on_Check_MultiWave_clicked();
 
-    void on_Reset_MultiWave_clicked();
-
-    void on_Puls0Lo_valueChanged(int value);
-
-    void on_Puls0Hi_valueChanged(int value);
+    void on_Import_REU_Image_triggered();
 
 private:
     void DrawWaveOut(void);

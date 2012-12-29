@@ -332,7 +332,14 @@
     <addaction name="Play_SidDump"/>
     <addaction name="Stop_SidDump"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="Import_REU_Image"/>
+   </widget>
    <addaction name="menuImport"/>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -361,6 +368,11 @@
   <action name="Stop_SidDump">
    <property name="text">
     <string>SID Dump anhalten</string>
+   </property>
+  </action>
+  <action name="Import_REU_Image">
+   <property name="text">
+    <string>Mischwellen (3,5,6,7) von REU-Image laden</string>
    </property>
   </action>
  </widget>

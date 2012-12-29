@@ -18,8 +18,8 @@
 #define SAMPLERATE 48000
 #define PUFFERSIZE 882
 
-#define WaveOutXW 400
-#define WaveOutYW 200
+#define WaveOutXW 200
+#define WaveOutYW 100
 
 void AudioMix(void *userdata, Uint8 *stream, int laenge);
 
@@ -91,7 +91,7 @@ void MainWindow::AudioLoop(short* stream, int laenge)
 
     for(int i=0; i<(laenge/2);i++)
     {
-        SoundPuffer[i] = (unsigned short)(SidPuffer[i]* 0.3f * 0xFFFF);
+        SoundPuffer[i] = (unsigned short)(SidPuffer[i]* 0.5f * 0xFFFF);
     }
     DrawWaveOut();
 }
@@ -251,17 +251,6 @@ void MainWindow::on_Stop_SidDump_triggered()
     sid->StopSIDDump();
 }
 
-void MainWindow::on_Check_MultiWave_clicked()
-{
-    if(sid->CheckMultiWave()) QMessageBox::information(this,"realSID Info","Es sind Mischwellen vorgekommen.");
-    else QMessageBox::information(this,"realSID Info","Es sind keine Mischwellen vorgekommen.");
-}
-
-void MainWindow::on_Reset_MultiWave_clicked()
-{
-    sid->ResetMultiWave();
-}
-
 void MainWindow::on_Puls0Lo_valueChanged(int value)
 {
     unsigned char wert = value;
@@ -280,4 +269,9 @@ void MainWindow::on_Puls0Hi_valueChanged(int value)
     sprintf(str00,"0x%2.2X[%d]",wert,wert);
     ui->Puls0Hi_Out->setText(str00);
     sid->WriteIO(3,wert);
+}
+
+void MainWindow::on_Import_REU_Image_triggered()
+{
+
 }

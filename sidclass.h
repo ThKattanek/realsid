@@ -31,8 +31,6 @@ public:
     bool OpenSIDDump(char *filename);
     void PlaySIDDump(void);
     void StopSIDDump(void);
-    bool CheckMultiWave(void);
-    void ResetMultiWave(void);
 
 private:
     void Reset(void);

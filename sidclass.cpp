@@ -190,15 +190,3 @@ void SIDClass::StopSIDDump()
 {
     IODump->StopDump();
 }
-
-bool SIDClass::CheckMultiWave()
-{
-    return OSC[0]->MultiWave | OSC[1]->MultiWave | OSC[2]->MultiWave;
-}
-
-void SIDClass::ResetMultiWave()
-{
-    OSC[0]->MultiWave = false;
-    OSC[1]->MultiWave = false;
-    OSC[2]->MultiWave = false;
-}
