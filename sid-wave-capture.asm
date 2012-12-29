@@ -11,7 +11,7 @@
 ; Bei den Daten handelt es sich um die oberen 8Bit der Waveausgabe !
 ; Als Frequenzwert für das Register wird $1000 gesetzt
 
-!to "sid-wave-capture.prg",cbm
+!to "bin/sid-wave-capture.prg",cbm
 
 sid = $d400
 vic = $d000
@@ -108,6 +108,9 @@ ok
 	ldx #$10
 	sta sid+14	
 	stx sid+15
+
+	sta sid+16	;Pulsweite auf 0
+	sta sid+17
 
 	ldy #$00
 loooop
