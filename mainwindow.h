@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 31.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -43,13 +43,45 @@ private slots:
 
     void on_Freq0Lo_valueChanged(int value);
     void on_Freq0Hi_valueChanged(int value);
+    void on_Freq1Lo_valueChanged(int value);
+    void on_Freq1Hi_valueChanged(int value);
+    void on_Freq2Lo_valueChanged(int value);
+    void on_Freq2Hi_valueChanged(int value);
     void on_Puls0Lo_valueChanged(int value);
     void on_Puls0Hi_valueChanged(int value);
+    void on_Puls1Lo_valueChanged(int value);
+    void on_Puls1Hi_valueChanged(int value);
+    void on_Puls2Lo_valueChanged(int value);
+    void on_Puls2Hi_valueChanged(int value);
+
+    void SetCtrlReg(int voice);
+
     void on_Tri0_clicked();
     void on_Saw0_clicked();
     void on_Pul0_clicked();
     void on_Nse0_clicked();
     void on_Tst0_clicked();
+    void on_Sync0_clicked();
+    void on_Ring0_clicked();
+    void on_Key0_clicked();
+
+    void on_Tri1_clicked();
+    void on_Saw1_clicked();
+    void on_Pul1_clicked();
+    void on_Nse1_clicked();
+    void on_Tst1_clicked();
+    void on_Sync1_clicked();
+    void on_Ring1_clicked();
+    void on_Key1_clicked();
+
+    void on_Tri2_clicked();
+    void on_Saw2_clicked();
+    void on_Pul2_clicked();
+    void on_Nse2_clicked();
+    void on_Tst2_clicked();
+    void on_Sync2_clicked();
+    void on_Ring2_clicked();
+    void on_Key2_clicked();
 
     void on_Open_SidDump_triggered();
     void on_Play_SidDump_triggered();

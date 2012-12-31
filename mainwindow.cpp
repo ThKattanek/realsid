@@ -191,59 +191,116 @@ void MainWindow::on_Freq0Hi_valueChanged(int value)
     sid->WriteIO(1,wert);
 }
 
-void MainWindow::on_Tri0_clicked()
+void MainWindow::on_Freq1Lo_valueChanged(int value)
 {
-    unsigned char wave = 0;
-    if(ui->Tri0->isChecked()) wave |= 16;
-    if(ui->Saw0->isChecked()) wave |= 32;
-    if(ui->Pul0->isChecked()) wave |= 64;
-    if(ui->Nse0->isChecked()) wave |= 128;
-    sid->WriteIO(4,wave);
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq1Lo_Out->setText(str00);
+    sid->WriteIO(7,wert);
 }
 
-void MainWindow::on_Saw0_clicked()
+void MainWindow::on_Freq1Hi_valueChanged(int value)
 {
-    unsigned char wave = 0;
-    if(ui->Tst0->isChecked()) wave |= 8;
-    if(ui->Tri0->isChecked()) wave |= 16;
-    if(ui->Saw0->isChecked()) wave |= 32;
-    if(ui->Pul0->isChecked()) wave |= 64;
-    if(ui->Nse0->isChecked()) wave |= 128;
-    sid->WriteIO(4,wave);
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq1Hi_Out->setText(str00);
+    sid->WriteIO(8,wert);
 }
 
-void MainWindow::on_Pul0_clicked()
+void MainWindow::on_Freq2Lo_valueChanged(int value)
 {
-    unsigned char wave = 0;
-    if(ui->Tst0->isChecked()) wave |= 8;
-    if(ui->Tri0->isChecked()) wave |= 16;
-    if(ui->Saw0->isChecked()) wave |= 32;
-    if(ui->Pul0->isChecked()) wave |= 64;
-    if(ui->Nse0->isChecked()) wave |= 128;
-    sid->WriteIO(4,wave);
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq2Lo_Out->setText(str00);
+    sid->WriteIO(14,wert);
 }
 
-void MainWindow::on_Nse0_clicked()
+void MainWindow::on_Freq2Hi_valueChanged(int value)
 {
-    unsigned char wave = 0;
-    if(ui->Tst0->isChecked()) wave |= 8;
-    if(ui->Tri0->isChecked()) wave |= 16;
-    if(ui->Saw0->isChecked()) wave |= 32;
-    if(ui->Pul0->isChecked()) wave |= 64;
-    if(ui->Nse0->isChecked()) wave |= 128;
-    sid->WriteIO(4,wave);
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Freq2Hi_Out->setText(str00);
+    sid->WriteIO(15,wert);
 }
 
-void MainWindow::on_Tst0_clicked()
+void MainWindow::SetCtrlReg(int voice)
 {
-    unsigned char wave = 0;
-    if(ui->Tst0->isChecked()) wave |= 8;
-    if(ui->Tri0->isChecked()) wave |= 16;
-    if(ui->Saw0->isChecked()) wave |= 32;
-    if(ui->Pul0->isChecked()) wave |= 64;
-    if(ui->Nse0->isChecked()) wave |= 128;
-    sid->WriteIO(4,wave);
+    unsigned char ctrl = 0;
+
+    switch(voice)
+    {
+    case 0:
+        if(ui->Key0->isChecked()) ctrl |= 1;
+        if(ui->Sync0->isChecked()) ctrl |= 2;
+        if(ui->Ring0->isChecked()) ctrl |= 4;
+        if(ui->Tst0->isChecked()) ctrl |= 8;
+        if(ui->Tri0->isChecked()) ctrl |= 16;
+        if(ui->Saw0->isChecked()) ctrl |= 32;
+        if(ui->Pul0->isChecked()) ctrl |= 64;
+        if(ui->Nse0->isChecked()) ctrl |= 128;
+        sid->WriteIO(4,ctrl);
+        break;
+    case 1:
+        if(ui->Key1->isChecked()) ctrl |= 1;
+        if(ui->Sync1->isChecked()) ctrl |= 2;
+        if(ui->Ring1->isChecked()) ctrl |= 4;
+        if(ui->Tst1->isChecked()) ctrl |= 8;
+        if(ui->Tri1->isChecked()) ctrl |= 16;
+        if(ui->Saw1->isChecked()) ctrl |= 32;
+        if(ui->Pul1->isChecked()) ctrl |= 64;
+        if(ui->Nse1->isChecked()) ctrl |= 128;
+        sid->WriteIO(11,ctrl);
+        break;
+    case 2:
+        if(ui->Key2->isChecked()) ctrl |= 1;
+        if(ui->Sync2->isChecked()) ctrl |= 2;
+        if(ui->Ring2->isChecked()) ctrl |= 4;
+        if(ui->Tst2->isChecked()) ctrl |= 8;
+        if(ui->Tri2->isChecked()) ctrl |= 16;
+        if(ui->Saw2->isChecked()) ctrl |= 32;
+        if(ui->Pul2->isChecked()) ctrl |= 64;
+        if(ui->Nse2->isChecked()) ctrl |= 128;
+        sid->WriteIO(18,ctrl);
+        break;
+    default:
+        break;
+    }
 }
+
+void MainWindow::on_Tri0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Saw0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Pul0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Nse0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Tst0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Sync0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Ring0_clicked(){SetCtrlReg(0);}
+void MainWindow::on_Key0_clicked(){SetCtrlReg(0);}
+
+void MainWindow::on_Tri1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Saw1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Pul1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Nse1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Tst1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Sync1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Ring1_clicked(){SetCtrlReg(1);}
+void MainWindow::on_Key1_clicked(){SetCtrlReg(1);}
+
+void MainWindow::on_Tri2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Saw2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Pul2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Nse2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Tst2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Sync2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Ring2_clicked(){SetCtrlReg(2);}
+void MainWindow::on_Key2_clicked(){SetCtrlReg(2);}
 
 void MainWindow::on_Open_SidDump_triggered()
 {
@@ -283,4 +340,44 @@ void MainWindow::on_Puls0Hi_valueChanged(int value)
     sprintf(str00,"0x%2.2X[%d]",wert,wert);
     ui->Puls0Hi_Out->setText(str00);
     sid->WriteIO(3,wert);
+}
+
+void MainWindow::on_Puls1Lo_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Puls1Lo_Out->setText(str00);
+    sid->WriteIO(9,wert);
+}
+
+void MainWindow::on_Puls1Hi_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Puls1Hi_Out->setText(str00);
+    sid->WriteIO(10,wert);
+}
+
+void MainWindow::on_Puls2Lo_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Puls2Lo_Out->setText(str00);
+    sid->WriteIO(16,wert);
+}
+
+void MainWindow::on_Puls2Hi_valueChanged(int value)
+{
+    unsigned char wert = value;
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",wert,wert);
+    ui->Puls2Hi_Out->setText(str00);
+    sid->WriteIO(17,wert);
 }
