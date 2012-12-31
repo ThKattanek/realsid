@@ -49,13 +49,11 @@ private slots:
     void on_Saw0_clicked();
     void on_Pul0_clicked();
     void on_Nse0_clicked();
+    void on_Tst0_clicked();
 
     void on_Open_SidDump_triggered();
     void on_Play_SidDump_triggered();
     void on_Stop_SidDump_triggered();
-
-
-    void on_Import_REU_Image_triggered();
 
 private:
     void DrawWaveOut(void);

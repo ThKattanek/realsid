@@ -3,7 +3,7 @@
 
 #endif // WAVES_H
 
-/// Alle Waves mit sid-wave-capture von Thorsten Kattanek in REU Image gerippt
+/// Alle Waves mit sid-wave-capture von Thorsten Kattanek in ein REU-Image gerippt
 /// mit Hexeditor Okteta als C Code exportiert
 
 /// MOS-8580R5

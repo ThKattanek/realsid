@@ -275,6 +275,19 @@
         <string>0</string>
        </property>
       </widget>
+      <widget class="QCheckBox" name="Tst0">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Test Bit</string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="voice1">
@@ -287,32 +300,6 @@
       <string>Voice 3</string>
      </attribute>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="Reset_MultiWave">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>310</y>
-      <width>101</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Reset MultiWave</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="Check_MultiWave">
-    <property name="geometry">
-     <rect>
-      <x>260</x>
-      <y>310</y>
-      <width>101</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Check MultiWave</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

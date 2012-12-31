@@ -37,6 +37,7 @@ private:
     unsigned short  FrequenzAdd;
     unsigned short  PulseCompare;
     unsigned char   WaveForm;
+    bool            TestBit;
 };
 
 #endif // OSCCLASS_H

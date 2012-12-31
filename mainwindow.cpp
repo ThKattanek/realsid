@@ -16,7 +16,7 @@
 #include "ui_mainwindow.h"
 
 #define SAMPLERATE 48000
-#define PUFFERSIZE 882
+#define PUFFERSIZE 1920
 
 #define WaveOutXW 200
 #define WaveOutYW 100
@@ -204,6 +204,7 @@ void MainWindow::on_Tri0_clicked()
 void MainWindow::on_Saw0_clicked()
 {
     unsigned char wave = 0;
+    if(ui->Tst0->isChecked()) wave |= 8;
     if(ui->Tri0->isChecked()) wave |= 16;
     if(ui->Saw0->isChecked()) wave |= 32;
     if(ui->Pul0->isChecked()) wave |= 64;
@@ -214,6 +215,7 @@ void MainWindow::on_Saw0_clicked()
 void MainWindow::on_Pul0_clicked()
 {
     unsigned char wave = 0;
+    if(ui->Tst0->isChecked()) wave |= 8;
     if(ui->Tri0->isChecked()) wave |= 16;
     if(ui->Saw0->isChecked()) wave |= 32;
     if(ui->Pul0->isChecked()) wave |= 64;
@@ -224,6 +226,18 @@ void MainWindow::on_Pul0_clicked()
 void MainWindow::on_Nse0_clicked()
 {
     unsigned char wave = 0;
+    if(ui->Tst0->isChecked()) wave |= 8;
+    if(ui->Tri0->isChecked()) wave |= 16;
+    if(ui->Saw0->isChecked()) wave |= 32;
+    if(ui->Pul0->isChecked()) wave |= 64;
+    if(ui->Nse0->isChecked()) wave |= 128;
+    sid->WriteIO(4,wave);
+}
+
+void MainWindow::on_Tst0_clicked()
+{
+    unsigned char wave = 0;
+    if(ui->Tst0->isChecked()) wave |= 8;
     if(ui->Tri0->isChecked()) wave |= 16;
     if(ui->Saw0->isChecked()) wave |= 32;
     if(ui->Pul0->isChecked()) wave |= 64;
@@ -269,9 +283,4 @@ void MainWindow::on_Puls0Hi_valueChanged(int value)
     sprintf(str00,"0x%2.2X[%d]",wert,wert);
     ui->Puls0Hi_Out->setText(str00);
     sid->WriteIO(3,wert);
-}
-
-void MainWindow::on_Import_REU_Image_triggered()
-{
-
 }

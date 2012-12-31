@@ -28,7 +28,8 @@ OTHER_FILES += \
     SID-Artikel.odt \
     referenz/dane-crest-mos-8580r5.ogg \
     referenz/dane-crest.sdp \
-    sid-wave-capture.asm
+    sid-wave-capture.asm \
+    SID-Artikel.pdf
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -49,6 +50,7 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
 
 
 
