@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: waves.h                               //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 31.12.2012		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #ifndef WAVES_H
 #define WAVES_H
 

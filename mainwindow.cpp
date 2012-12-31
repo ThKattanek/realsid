@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 31.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -380,4 +380,136 @@ void MainWindow::on_Puls2Hi_valueChanged(int value)
     sprintf(str00,"0x%2.2X[%d]",wert,wert);
     ui->Puls2Hi_Out->setText(str00);
     sid->WriteIO(17,wert);
+}
+
+void MainWindow::on_Attack0_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack0->value() & 0xf) << 4) | (ui->Decay0->value() & 0xf);
+    sid->WriteIO(5,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Attack0_Out->setText(str00);
+}
+
+void MainWindow::on_Decay0_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack0->value() & 0xf) << 4) | (ui->Decay0->value() & 0xf);
+    sid->WriteIO(5,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Decay0_Out->setText(str00);
+}
+
+void MainWindow::on_Sustain0_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain0->value() & 0xf) << 4) | (ui->Release0->value() & 0xf);
+    sid->WriteIO(6,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Sustain0_Out->setText(str00);
+}
+
+void MainWindow::on_Release0_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain0->value() & 0xf) << 4) | (ui->Release0->value() & 0xf);
+    sid->WriteIO(6,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Release0_Out->setText(str00);
+}
+
+void MainWindow::on_Attack1_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack1->value() & 0xf) << 4) | (ui->Decay1->value() & 0xf);
+    sid->WriteIO(12,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Attack1_Out->setText(str00);
+}
+
+void MainWindow::on_Decay1_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack1->value() & 0xf) << 4) | (ui->Decay1->value() & 0xf);
+    sid->WriteIO(12,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Decay1_Out->setText(str00);
+}
+
+void MainWindow::on_Sustain1_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain1->value() & 0xf) << 4) | (ui->Release1->value() & 0xf);
+    sid->WriteIO(13,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Sustain1_Out->setText(str00);
+}
+
+void MainWindow::on_Release1_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain1->value() & 0xf) << 4) | (ui->Release1->value() & 0xf);
+    sid->WriteIO(13,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Release1_Out->setText(str00);
+}
+
+void MainWindow::on_Attack2_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack2->value() & 0xf) << 4) | (ui->Decay2->value() & 0xf);
+    sid->WriteIO(19,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Attack2_Out->setText(str00);
+}
+
+void MainWindow::on_Decay2_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Attack2->value() & 0xf) << 4) | (ui->Decay2->value() & 0xf);
+    sid->WriteIO(19,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Decay2_Out->setText(str00);
+}
+
+void MainWindow::on_Sustain2_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain2->value() & 0xf) << 4) | (ui->Release2->value() & 0xf);
+    sid->WriteIO(20,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Sustain2_Out->setText(str00);
+}
+
+void MainWindow::on_Release2_valueChanged(int value)
+{
+    unsigned char wert;
+    wert = ((ui->Sustain2->value() & 0xf) << 4) | (ui->Release2->value() & 0xf);
+    sid->WriteIO(20,wert);
+
+    char str00[32];
+    sprintf(str00,"%1.1X",value & 0xf);
+    ui->Release2_Out->setText(str00);
 }

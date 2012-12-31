@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 31.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -26,7 +26,10 @@ SIDClass::SIDClass(int samplerate,int puffersize)
     IODump = new SIDDumpClass(IO);
 
     for(int i=0;i<3;i++)
+    {
         OSC[i] = new OSCClass();
+        ENV[i] = new ENVClass();
+    }
 
     Reset();
 }
@@ -35,8 +38,12 @@ SIDClass::~SIDClass()
 {
     delete SoundPuffer;
     delete IODump;
+
     for(int i=0;i<3;i++)
+    {
+        delete ENV[i];
         delete OSC[i];
+    }
 }
 
 void SIDClass::ResetSoundPufferPos()
@@ -60,14 +67,18 @@ void SIDClass::OneCycle()
     OSC[1]->OneCycle();
     OSC[2]->OneCycle();
 
+    ENV[0]->OneCycle();
+    ENV[1]->OneCycle();
+    ENV[2]->OneCycle();
+
     FreqConvCounter += FreqConvAddWert;
     if(FreqConvCounter >= 1.0f)
     {
         FreqConvCounter-=(double)1.0;
 
-        float mixer = float(OSC[0]->GetOutput())/(float)0xFFF;
-        mixer += float(OSC[1]->GetOutput())/(float)0xFFF;
-        mixer += float(OSC[2]->GetOutput())/(float)0xFFF;
+        float mixer = float(OSC[0]->GetOutput()*ENV[0]->GetOutput())/(float)0xFFFFF;
+        mixer += float(OSC[1]->GetOutput()*ENV[1]->GetOutput())/(float)0xFFFFF;
+        mixer += float(OSC[2]->GetOutput()*ENV[2]->GetOutput())/(float)0xFFFFF;
         mixer /= 3.0f;
 
         SoundPuffer[SoundPufferPos++] = mixer;
@@ -103,6 +114,10 @@ void SIDClass::Reset()
     OSC[0]->Reset();
     OSC[1]->Reset();
     OSC[2]->Reset();
+
+    ENV[0]->Reset();
+    ENV[1]->Reset();
+    ENV[2]->Reset();
 }
 
 void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
@@ -130,6 +145,13 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
     case 4: // Steuerregister Stimme 1
         Ctrl0 = wert;
         OSC[0]->SetControlBits(Ctrl0);
+        ENV[0]->SetKeyBit(wert & 0x01);
+        break;
+    case 5: // Attack & Decay Stimme 1
+        ENV[0]->SetAttackDecay(wert);
+        break;
+    case 6: // Sustain & Release Stimme 1
+        ENV[0]->SetSustainRelease(wert);
         break;
     case 7: // Oszillatorfrequenz LoByte Stimme 2
         Freq1Lo = wert;
@@ -150,6 +172,13 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
     case 11: // Steuerregister Stimme 2
         Ctrl1 = wert;
         OSC[1]->SetControlBits(Ctrl1);
+        ENV[1]->SetKeyBit(wert & 0x01);
+        break;
+    case 12: // Attack & Decay Stimme 2
+        ENV[1]->SetAttackDecay(wert);
+        break;
+    case 13: // Sustain & Release Stimme 2
+        ENV[1]->SetSustainRelease(wert);
         break;
     case 14: // Oszillatorfrequenz LoByte Stimme 3
         Freq2Lo = wert;
@@ -170,6 +199,13 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
     case 18: // Steuerregister Stimme 3
         Ctrl2 = wert;
         OSC[2]->SetControlBits(Ctrl2);
+        ENV[2]->SetKeyBit(wert & 0x01);
+        break;
+    case 19: // Attack & Decay Stimme 2
+        ENV[2]->SetAttackDecay(wert);
+        break;
+    case 20: // Sustain & Release Stimme 2
+        ENV[2]->SetSustainRelease(wert);
         break;
     default:
         break;

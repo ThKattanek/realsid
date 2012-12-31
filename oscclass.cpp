@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 29.12.2012		//
+// Letzte Änderung am 31.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////

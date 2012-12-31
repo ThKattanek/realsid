@@ -365,6 +365,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -426,6 +429,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -471,6 +477,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -515,6 +524,9 @@
          <width>23</width>
          <height>71</height>
         </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -848,6 +860,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -909,6 +924,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -954,6 +972,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -998,6 +1019,9 @@
          <width>23</width>
          <height>71</height>
         </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -1331,6 +1355,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -1392,6 +1419,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -1437,6 +1467,9 @@
          <height>71</height>
         </rect>
        </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -1481,6 +1514,9 @@
          <width>23</width>
          <height>71</height>
         </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>

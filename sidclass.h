@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek     //
 //						//
-// Letzte Änderung am 27.12.2012		//
+// Letzte Änderung am 31.12.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -16,6 +16,7 @@
 #define SIDCLASS_H
 
 #include <oscclass.h>
+#include <envclass.h>
 #include <siddump.h>
 
 class SIDClass
@@ -43,8 +44,9 @@ private:
     double          FreqConvCounter;        // interner Counter für Fast-Resampling ohne interpolieren
     double          FreqConvAddWert;        // Wert der bei jedem Zyklus zum FreqConvCounter hinzu addiert wird
 
-    SIDDumpClass    *IODump;               // Wird benötigt um SIDDump Files vom Emu64 zu laden (Diese Klasse wird im Emu64 gepflegt)
-    OSCClass        *OSC[3];                // Alles 3 Oszillatoren
+    SIDDumpClass    *IODump;                // Wird benötigt um SIDDump Files vom Emu64 zu laden (Diese Klasse wird im Emu64 gepflegt)
+    OSCClass        *OSC[3];                // Alle 3 Oszillatoren
+    ENVClass        *ENV[3];                // Alle 3 Hüllkurvengeneratoren
 
     /// Alle IO Register ///
     unsigned char   IO[32];

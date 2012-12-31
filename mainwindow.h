@@ -87,6 +87,21 @@ private slots:
     void on_Play_SidDump_triggered();
     void on_Stop_SidDump_triggered();
 
+    void on_Attack0_valueChanged(int value);
+    void on_Decay0_valueChanged(int value);
+    void on_Sustain0_valueChanged(int value);
+    void on_Release0_valueChanged(int value);
+
+    void on_Attack1_valueChanged(int value);
+    void on_Decay1_valueChanged(int value);
+    void on_Sustain1_valueChanged(int value);
+    void on_Release1_valueChanged(int value);
+
+    void on_Attack2_valueChanged(int value);
+    void on_Decay2_valueChanged(int value);
+    void on_Sustain2_valueChanged(int value);
+    void on_Release2_valueChanged(int value);
+
 private:
     void DrawWaveOut(void);
     Ui::MainWindow *ui;

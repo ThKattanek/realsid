@@ -13,13 +13,15 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     sidclass.cpp \
     oscclass.cpp \
-    siddump.cpp
+    siddump.cpp \
+    envclass.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
     oscclass.h \
     siddump.h \
-    waves.h
+    waves.h \
+    envclass.h
 
 FORMS    += mainwindow.ui
 
@@ -50,6 +52,8 @@ TARGET = start_linux64
 DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
+
+
 
 
 
