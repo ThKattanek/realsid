@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 31.12.2012		//
+// Letzte Änderung am 02.01.2013		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -30,6 +30,14 @@ SIDClass::SIDClass(int samplerate,int puffersize)
         OSC[i] = new OSCClass();
         ENV[i] = new ENVClass();
     }
+
+    OSC[0]->SetOSCSource(OSC[2]);
+    OSC[1]->SetOSCSource(OSC[0]);
+    OSC[2]->SetOSCSource(OSC[1]);
+
+    OSC[0]->SetOSCDestination(OSC[1]);
+    OSC[1]->SetOSCDestination(OSC[2]);
+    OSC[2]->SetOSCDestination(OSC[0]);
 
     Reset();
 }
