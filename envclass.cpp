@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 31.12.2012		//
+// Letzte Änderung am 02.01.2013		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -45,66 +45,70 @@ void ENVClass::Reset()
 void ENVClass::OneCycle()
 {
     if(++RateCounter & 0x8000) ++RateCounter &= 0x7FFF;
-    if(RateCounter != RatePeriod) goto L10;
-    RateCounter=0;
-    if(State == ATTACK || ++ExponentialCounter == ExponentialCounterPeriod)
+    if(RateCounter == RatePeriod)
     {
-        ExponentialCounter=0;
-        if(HoldZero) goto L10;
+        RateCounter=0;
 
-        switch(State)
+        if(State == ATTACK || ++ExponentialCounter == ExponentialCounterPeriod)
         {
-        case ATTACK:
-            ++EnvCounter &= 0xFF;
-            if(EnvCounter==0xFF)
+            ExponentialCounter=0;
+
+            if(!HoldZero)
             {
-                State=DECAY_SUSTAIN;
-                RatePeriod=RateCounterPeriod[Decay];
+                switch(State)
+                {
+                case ATTACK:
+                    ++EnvCounter &= 0xFF;
+                    if(EnvCounter==0xFF)
+                    {
+                        State=DECAY_SUSTAIN;
+                        RatePeriod=RateCounterPeriod[Decay];
+                    }
+                    break;
+
+                case DECAY_SUSTAIN:
+                    if(EnvCounter != SustainLevel[Sustain]) --EnvCounter;
+                    break;
+
+                case RELEASE:
+                    --EnvCounter &= 0xFF;
+                    break;
+                }
+
+                switch(EnvCounter)
+                {
+                case 0xFF:
+                    ExponentialCounterPeriod=1;
+                    break;
+
+                case 0x5D:
+                    ExponentialCounterPeriod=2;
+                    break;
+
+                case 0x36:
+                    ExponentialCounterPeriod=4;
+                    break;
+
+                case 0x1A:
+                    ExponentialCounterPeriod=8;
+                    break;
+
+                case 0x0E:
+                    ExponentialCounterPeriod=16;
+                    break;
+
+                case 0x06:
+                    ExponentialCounterPeriod=30;
+                    break;
+
+                case 0x00:
+                    ExponentialCounterPeriod=1;
+                    HoldZero=true;
+                    break;
+                }
             }
-            break;
-
-        case DECAY_SUSTAIN:
-            if(EnvCounter != SustainLevel[Sustain]) --EnvCounter;
-            break;
-
-        case RELEASE:
-            --EnvCounter &= 0xFF;
-            break;
-        }
-
-        switch(EnvCounter)
-        {
-        case 0xFF:
-            ExponentialCounterPeriod=1;
-            break;
-
-        case 0x5D:
-            ExponentialCounterPeriod=2;
-            break;
-
-        case 0x36:
-            ExponentialCounterPeriod=4;
-            break;
-
-        case 0x1A:
-            ExponentialCounterPeriod=8;
-            break;
-
-        case 0x0E:
-            ExponentialCounterPeriod=16;
-            break;
-
-        case 0x06:
-            ExponentialCounterPeriod=30;
-            break;
-
-        case 0x00:
-            ExponentialCounterPeriod=1;
-            HoldZero=true;
-            break;
         }
     }
-L10:;
 }
 
 void ENVClass::SetKeyBit(bool wert)
