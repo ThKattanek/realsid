@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/pictures">
+        <file>referenz/mos8580-pic.png</file>
+    </qresource>
+</RCC>

@@ -53,6 +53,10 @@ DESTDIR = "bin"
 LIBS += -lSDL -lSDL_gfx
 }
 
+RESOURCES += \
+    res.qrc
+
+
 
 
 

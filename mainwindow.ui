@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>471</width>
+    <width>682</width>
     <height>428</height>
    </rect>
   </property>
@@ -1525,13 +1525,26 @@
      </widget>
     </widget>
    </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>30</y>
+      <width>208</width>
+      <height>160</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/new/pictures/referenz/mos8580-pic.png);</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>471</width>
+     <width>682</width>
      <height>20</height>
     </rect>
    </property>
