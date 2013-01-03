@@ -74,7 +74,7 @@ void FilterClass::EnableFilter(bool enabled)
 
 void FilterClass::SetFrequenz(unsigned short frequenz)
 {
-    FilterFrequenz = frequenz;
+    FilterFrequenz = frequenz & 0x07FF;
     SetW0();
 }
 

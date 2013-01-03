@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 31.12.2012		//
+// Letzte Änderung am 03.01.2013		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -15,11 +15,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#define SAMPLERATE 96000
-#define PUFFERSIZE 3840
+#define SAMPLERATE 48000
+#define PUFFERSIZE 1920
 
 #define WaveOutXW 320
-#define WaveOutYW 200
+#define WaveOutYW 150
 
 void AudioMix(void *userdata, Uint8 *stream, int laenge);
 
@@ -389,7 +389,7 @@ void MainWindow::on_Attack0_valueChanged(int value)
     sid->WriteIO(5,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Attack0_Out->setText(str00);
 }
 
@@ -400,7 +400,7 @@ void MainWindow::on_Decay0_valueChanged(int value)
     sid->WriteIO(5,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Decay0_Out->setText(str00);
 }
 
@@ -411,7 +411,7 @@ void MainWindow::on_Sustain0_valueChanged(int value)
     sid->WriteIO(6,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Sustain0_Out->setText(str00);
 }
 
@@ -422,7 +422,7 @@ void MainWindow::on_Release0_valueChanged(int value)
     sid->WriteIO(6,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Release0_Out->setText(str00);
 }
 
@@ -433,7 +433,7 @@ void MainWindow::on_Attack1_valueChanged(int value)
     sid->WriteIO(12,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Attack1_Out->setText(str00);
 }
 
@@ -444,7 +444,7 @@ void MainWindow::on_Decay1_valueChanged(int value)
     sid->WriteIO(12,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Decay1_Out->setText(str00);
 }
 
@@ -455,7 +455,7 @@ void MainWindow::on_Sustain1_valueChanged(int value)
     sid->WriteIO(13,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Sustain1_Out->setText(str00);
 }
 
@@ -466,7 +466,7 @@ void MainWindow::on_Release1_valueChanged(int value)
     sid->WriteIO(13,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Release1_Out->setText(str00);
 }
 
@@ -477,7 +477,7 @@ void MainWindow::on_Attack2_valueChanged(int value)
     sid->WriteIO(19,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Attack2_Out->setText(str00);
 }
 
@@ -488,7 +488,7 @@ void MainWindow::on_Decay2_valueChanged(int value)
     sid->WriteIO(19,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Decay2_Out->setText(str00);
 }
 
@@ -499,7 +499,7 @@ void MainWindow::on_Sustain2_valueChanged(int value)
     sid->WriteIO(20,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Sustain2_Out->setText(str00);
 }
 
@@ -510,6 +510,110 @@ void MainWindow::on_Release2_valueChanged(int value)
     sid->WriteIO(20,wert);
 
     char str00[32];
-    sprintf(str00,"%1.1X",value & 0xf);
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
     ui->Release2_Out->setText(str00);
+}
+
+void MainWindow::on_FilterFreq_valueChanged(int value)
+{
+    sid->WriteIO(21,value & 0x07);
+    sid->WriteIO(22,value >> 3);
+
+    char str00[32];
+    sprintf(str00,"0x%3.3X[%d]",value & 0x7ff,value & 0x7ff);
+    ui->FilterFreq_Out->setText(str00);
+}
+
+void MainWindow::on_FilterReso_valueChanged(int value)
+{
+    unsigned char wert = ui->FilterReso->value() << 4;
+    if(ui->FilterV0->isChecked()) wert |= 1;
+    if(ui->FilterV1->isChecked()) wert |= 2;
+    if(ui->FilterV2->isChecked()) wert |= 4;
+    sid->WriteIO(23,wert);
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
+    ui->FilterReso_Out->setText(str00);
+}
+
+void MainWindow::on_Volume_valueChanged(int value)
+{
+    unsigned char wert = ui->Volume->value() & 0x0F;
+    if(ui->Tiefpass->isChecked()) wert |= 16;
+    if(ui->Bandpass->isChecked()) wert |= 32;
+    if(ui->Hochpass->isChecked()) wert |= 64;
+    if(ui->MuteVoice2->isChecked()) wert |= 128;
+    sid->WriteIO(24,wert);
+
+    char str00[32];
+    sprintf(str00,"0x%2.2X[%d]",value & 0xf,value & 0xf);
+    ui->Volume_Out->setText(str00);
+}
+
+void MainWindow::on_FilterV0_clicked()
+{
+    unsigned char wert = ui->FilterReso->value() << 4;
+    if(ui->FilterV0->isChecked()) wert |= 1;
+    if(ui->FilterV1->isChecked()) wert |= 2;
+    if(ui->FilterV2->isChecked()) wert |= 4;
+    sid->WriteIO(23,wert);
+}
+
+void MainWindow::on_FilterV1_clicked()
+{
+    unsigned char wert = ui->FilterReso->value() << 4;
+    if(ui->FilterV0->isChecked()) wert |= 1;
+    if(ui->FilterV1->isChecked()) wert |= 2;
+    if(ui->FilterV2->isChecked()) wert |= 4;
+    sid->WriteIO(23,wert);
+}
+
+void MainWindow::on_FilterV2_clicked()
+{
+    unsigned char wert = ui->FilterReso->value() << 4;
+    if(ui->FilterV0->isChecked()) wert |= 1;
+    if(ui->FilterV1->isChecked()) wert |= 2;
+    if(ui->FilterV2->isChecked()) wert |= 4;
+    sid->WriteIO(23,wert);
+}
+
+void MainWindow::on_Tiefpass_clicked()
+{
+    unsigned char wert = ui->Volume->value() & 0x0F;
+    if(ui->Tiefpass->isChecked()) wert |= 16;
+    if(ui->Bandpass->isChecked()) wert |= 32;
+    if(ui->Hochpass->isChecked()) wert |= 64;
+    if(ui->MuteVoice2->isChecked()) wert |= 128;
+    sid->WriteIO(24,wert);
+}
+
+void MainWindow::on_Hochpass_clicked()
+{
+    unsigned char wert = ui->Volume->value() & 0x0F;
+    if(ui->Tiefpass->isChecked()) wert |= 16;
+    if(ui->Bandpass->isChecked()) wert |= 32;
+    if(ui->Hochpass->isChecked()) wert |= 64;
+    if(ui->MuteVoice2->isChecked()) wert |= 128;
+    sid->WriteIO(24,wert);
+}
+
+void MainWindow::on_Bandpass_clicked()
+{
+    unsigned char wert = ui->Volume->value() & 0x0F;
+    if(ui->Tiefpass->isChecked()) wert |= 16;
+    if(ui->Bandpass->isChecked()) wert |= 32;
+    if(ui->Hochpass->isChecked()) wert |= 64;
+    if(ui->MuteVoice2->isChecked()) wert |= 128;
+    sid->WriteIO(24,wert);
+}
+
+void MainWindow::on_MuteVoice2_clicked()
+{
+    unsigned char wert = ui->Volume->value() & 0x0F;
+    if(ui->Tiefpass->isChecked()) wert |= 16;
+    if(ui->Bandpass->isChecked()) wert |= 32;
+    if(ui->Hochpass->isChecked()) wert |= 64;
+    if(ui->MuteVoice2->isChecked()) wert |= 128;
+    sid->WriteIO(24,wert);
 }

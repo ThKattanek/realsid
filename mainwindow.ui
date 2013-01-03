@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>682</width>
-    <height>428</height>
+    <width>463</width>
+    <height>523</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>360</y>
+      <y>455</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -32,8 +32,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>451</width>
-      <height>341</height>
+      <width>441</width>
+      <height>301</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -48,8 +48,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>421</width>
-        <height>161</height>
+        <width>411</width>
+        <height>136</height>
        </rect>
       </property>
       <property name="title">
@@ -59,9 +59,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>30</y>
-         <width>52</width>
-         <height>14</height>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -72,9 +72,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>50</y>
-         <width>52</width>
-         <height>14</height>
+         <y>35</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -85,8 +85,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>30</y>
-         <width>291</width>
+         <y>20</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -101,8 +101,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>50</y>
-         <width>291</width>
+         <y>35</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -117,33 +117,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>30</y>
-         <width>61</width>
+         <y>20</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Freq0Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>50</y>
-         <width>61</width>
+         <y>35</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tri0">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
+         <x>5</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -155,8 +155,8 @@
       <widget class="QCheckBox" name="Saw0">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>110</y>
+         <x>75</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -169,7 +169,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -182,7 +182,7 @@
        <property name="geometry">
         <rect>
          <x>240</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -195,7 +195,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>70</y>
+         <y>50</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -208,7 +208,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>90</y>
+         <y>65</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -221,8 +221,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>70</y>
-         <width>291</width>
+         <y>50</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -237,8 +237,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>90</y>
-         <width>291</width>
+         <y>65</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -253,33 +253,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>70</y>
-         <width>52</width>
-         <height>14</height>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Puls0Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>90</y>
-         <width>52</width>
-         <height>14</height>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tst0">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>130</y>
+         <x>5</x>
+         <y>110</y>
          <width>71</width>
          <height>21</height>
         </rect>
@@ -291,8 +291,8 @@
       <widget class="QCheckBox" name="Sync0">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>130</y>
+         <x>75</x>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -305,7 +305,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>130</y>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -319,9 +319,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>180</y>
-        <width>421</width>
-        <height>121</height>
+        <y>150</y>
+        <width>411</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
@@ -332,12 +332,12 @@
         <rect>
          <x>11</x>
          <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>A</string>
+        <string>Attack</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -346,9 +346,9 @@
       <widget class="QCheckBox" name="Key0">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>50</y>
-         <width>80</width>
+         <x>10</x>
+         <y>85</y>
+         <width>91</width>
          <height>21</height>
         </rect>
        </property>
@@ -356,180 +356,180 @@
         <string>Key Bit</string>
        </property>
       </widget>
-      <widget class="QSlider" name="Attack0">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
       <widget class="QLabel" name="Attack0_Out">
        <property name="geometry">
         <rect>
-         <x>15</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>20</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="Decay0_Out">
        <property name="geometry">
         <rect>
-         <x>35</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>35</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_13">
        <property name="geometry">
         <rect>
-         <x>31</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>35</y>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>D</string>
+        <string>Decay</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Decay0">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Sustain0_Out">
        <property name="geometry">
         <rect>
-         <x>55</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_14">
        <property name="geometry">
         <rect>
-         <x>51</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>S</string>
+        <string>Sustain</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Sustain0">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Release0_Out">
        <property name="geometry">
         <rect>
-         <x>75</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_15">
        <property name="geometry">
         <rect>
-         <x>71</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>15</x>
+         <y>65</y>
+         <width>46</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>R</string>
+        <string>Release</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QSlider" name="Release0">
+      <widget class="QScrollBar" name="Attack0">
        <property name="geometry">
         <rect>
          <x>70</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
+         <y>20</y>
+         <width>276</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="maximum">
         <number>15</number>
        </property>
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Decay0">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>35</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Sustain0">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>50</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Release0">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>65</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </widget>
@@ -543,8 +543,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>421</width>
-        <height>161</height>
+        <width>411</width>
+        <height>136</height>
        </rect>
       </property>
       <property name="title">
@@ -554,9 +554,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>30</y>
-         <width>52</width>
-         <height>14</height>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -567,9 +567,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>50</y>
-         <width>52</width>
-         <height>14</height>
+         <y>35</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -580,8 +580,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>30</y>
-         <width>291</width>
+         <y>20</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -596,8 +596,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>50</y>
-         <width>291</width>
+         <y>35</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -612,33 +612,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>30</y>
-         <width>61</width>
+         <y>20</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Freq1Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>50</y>
-         <width>61</width>
+         <y>35</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tri1">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
+         <x>5</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -650,8 +650,8 @@
       <widget class="QCheckBox" name="Saw1">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>110</y>
+         <x>75</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -664,7 +664,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -677,7 +677,7 @@
        <property name="geometry">
         <rect>
          <x>240</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -690,7 +690,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>70</y>
+         <y>50</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -703,7 +703,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>90</y>
+         <y>65</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -716,8 +716,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>70</y>
-         <width>291</width>
+         <y>50</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -732,8 +732,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>90</y>
-         <width>291</width>
+         <y>65</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -748,33 +748,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>70</y>
-         <width>52</width>
-         <height>14</height>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Puls1Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>90</y>
-         <width>52</width>
-         <height>14</height>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tst1">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>130</y>
+         <x>5</x>
+         <y>110</y>
          <width>71</width>
          <height>21</height>
         </rect>
@@ -786,8 +786,8 @@
       <widget class="QCheckBox" name="Sync1">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>130</y>
+         <x>75</x>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -800,7 +800,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>130</y>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -814,9 +814,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>180</y>
-        <width>421</width>
-        <height>121</height>
+        <y>150</y>
+        <width>411</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
@@ -827,12 +827,12 @@
         <rect>
          <x>11</x>
          <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>A</string>
+        <string>Attack</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -841,9 +841,9 @@
       <widget class="QCheckBox" name="Key1">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>50</y>
-         <width>80</width>
+         <x>10</x>
+         <y>85</y>
+         <width>91</width>
          <height>21</height>
         </rect>
        </property>
@@ -851,180 +851,180 @@
         <string>Key Bit</string>
        </property>
       </widget>
-      <widget class="QSlider" name="Attack1">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
       <widget class="QLabel" name="Attack1_Out">
        <property name="geometry">
         <rect>
-         <x>15</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>20</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="Decay1_Out">
        <property name="geometry">
         <rect>
-         <x>35</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>35</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_17">
        <property name="geometry">
         <rect>
-         <x>31</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>35</y>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>D</string>
+        <string>Decay</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Decay1">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Sustain1_Out">
        <property name="geometry">
         <rect>
-         <x>55</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_18">
        <property name="geometry">
         <rect>
-         <x>51</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>S</string>
+        <string>Sustain</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Sustain1">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Release1_Out">
        <property name="geometry">
         <rect>
-         <x>75</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_19">
        <property name="geometry">
         <rect>
-         <x>71</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>15</x>
+         <y>65</y>
+         <width>46</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>R</string>
+        <string>Release</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QSlider" name="Release1">
+      <widget class="QScrollBar" name="Attack1">
        <property name="geometry">
         <rect>
          <x>70</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
+         <y>20</y>
+         <width>276</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="maximum">
         <number>15</number>
        </property>
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Decay1">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>35</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Sustain1">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>50</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Release1">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>65</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </widget>
@@ -1038,8 +1038,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>421</width>
-        <height>161</height>
+        <width>411</width>
+        <height>136</height>
        </rect>
       </property>
       <property name="title">
@@ -1049,9 +1049,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>30</y>
-         <width>52</width>
-         <height>14</height>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -1062,9 +1062,9 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>50</y>
-         <width>52</width>
-         <height>14</height>
+         <y>35</y>
+         <width>41</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -1075,8 +1075,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>30</y>
-         <width>291</width>
+         <y>20</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -1091,8 +1091,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>50</y>
-         <width>291</width>
+         <y>35</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -1107,33 +1107,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>30</y>
-         <width>61</width>
+         <y>20</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Freq2Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>50</y>
-         <width>61</width>
+         <y>35</y>
+         <width>56</width>
          <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tri2">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>110</y>
+         <x>5</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -1145,8 +1145,8 @@
       <widget class="QCheckBox" name="Saw2">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>110</y>
+         <x>75</x>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -1159,7 +1159,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -1172,7 +1172,7 @@
        <property name="geometry">
         <rect>
          <x>240</x>
-         <y>110</y>
+         <y>85</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -1185,7 +1185,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>70</y>
+         <y>50</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -1198,7 +1198,7 @@
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>90</y>
+         <y>65</y>
          <width>41</width>
          <height>16</height>
         </rect>
@@ -1211,8 +1211,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>70</y>
-         <width>291</width>
+         <y>50</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -1227,8 +1227,8 @@
        <property name="geometry">
         <rect>
          <x>50</x>
-         <y>90</y>
-         <width>291</width>
+         <y>65</y>
+         <width>296</width>
          <height>16</height>
         </rect>
        </property>
@@ -1243,33 +1243,33 @@
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>70</y>
-         <width>52</width>
-         <height>14</height>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QLabel" name="Puls2Hi_Out">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>90</y>
-         <width>52</width>
-         <height>14</height>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
       </widget>
       <widget class="QCheckBox" name="Tst2">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>130</y>
+         <x>5</x>
+         <y>110</y>
          <width>71</width>
          <height>21</height>
         </rect>
@@ -1281,8 +1281,8 @@
       <widget class="QCheckBox" name="Sync2">
        <property name="geometry">
         <rect>
-         <x>80</x>
-         <y>130</y>
+         <x>75</x>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -1295,7 +1295,7 @@
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>130</y>
+         <y>110</y>
          <width>80</width>
          <height>21</height>
         </rect>
@@ -1309,9 +1309,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>180</y>
-        <width>421</width>
-        <height>121</height>
+        <y>150</y>
+        <width>411</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="title">
@@ -1322,12 +1322,12 @@
         <rect>
          <x>11</x>
          <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>A</string>
+        <string>Attack</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -1336,9 +1336,9 @@
       <widget class="QCheckBox" name="Key2">
        <property name="geometry">
         <rect>
-         <x>110</x>
-         <y>50</y>
-         <width>80</width>
+         <x>10</x>
+         <y>85</y>
+         <width>91</width>
          <height>21</height>
         </rect>
        </property>
@@ -1346,197 +1346,430 @@
         <string>Key Bit</string>
        </property>
       </widget>
-      <widget class="QSlider" name="Attack2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
       <widget class="QLabel" name="Attack2_Out">
        <property name="geometry">
         <rect>
-         <x>15</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>20</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="Decay2_Out">
        <property name="geometry">
         <rect>
-         <x>35</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>35</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_21">
        <property name="geometry">
         <rect>
-         <x>31</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>35</y>
+         <width>41</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>D</string>
+        <string>Decay</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Decay2">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Sustain2_Out">
        <property name="geometry">
         <rect>
-         <x>55</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>50</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_22">
        <property name="geometry">
         <rect>
-         <x>51</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>10</x>
+         <y>50</y>
+         <width>51</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>S</string>
+        <string>Sustain</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-      <widget class="QSlider" name="Sustain2">
-       <property name="geometry">
-        <rect>
-         <x>50</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
-        </rect>
-       </property>
-       <property name="maximum">
-        <number>15</number>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
        </property>
       </widget>
       <widget class="QLabel" name="Release2_Out">
        <property name="geometry">
         <rect>
-         <x>75</x>
-         <y>100</y>
-         <width>16</width>
-         <height>20</height>
+         <x>350</x>
+         <y>65</y>
+         <width>56</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
-        <string>0</string>
+        <string>0x00[0]</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
       <widget class="QLabel" name="label_23">
        <property name="geometry">
         <rect>
-         <x>71</x>
-         <y>19</y>
-         <width>21</width>
-         <height>16</height>
+         <x>15</x>
+         <y>65</y>
+         <width>46</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>R</string>
+        <string>Release</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QSlider" name="Release2">
+      <widget class="QScrollBar" name="Attack2">
        <property name="geometry">
         <rect>
          <x>70</x>
-         <y>30</y>
-         <width>23</width>
-         <height>71</height>
+         <y>20</y>
+         <width>276</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="maximum">
         <number>15</number>
        </property>
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Decay2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>35</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Sustain2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>50</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="Release2">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>65</y>
+         <width>276</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="maximum">
+        <number>15</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </widget>
     </widget>
    </widget>
-   <widget class="QGraphicsView" name="graphicsView">
+   <widget class="QGroupBox" name="groupBox_7">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>30</y>
-      <width>208</width>
-      <height>160</height>
+      <x>10</x>
+      <y>315</y>
+      <width>441</width>
+      <height>136</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/new/pictures/referenz/mos8580-pic.png);</string>
+    <property name="title">
+     <string>Filter</string>
     </property>
+    <widget class="QLabel" name="label_24">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>56</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Frequenz</string>
+     </property>
+    </widget>
+    <widget class="QScrollBar" name="FilterFreq">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>20</y>
+       <width>296</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>2047</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="FilterFreq_Out">
+     <property name="geometry">
+      <rect>
+       <x>365</x>
+       <y>20</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0x00[0]</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_26">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>35</y>
+       <width>56</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Resonanz</string>
+     </property>
+    </widget>
+    <widget class="QScrollBar" name="FilterReso">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>35</y>
+       <width>296</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>15</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="FilterReso_Out">
+     <property name="geometry">
+      <rect>
+       <x>365</x>
+       <y>35</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0x00[0]</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FilterV0">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>66</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Voice 1</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FilterV1">
+     <property name="geometry">
+      <rect>
+       <x>95</x>
+       <y>60</y>
+       <width>66</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Voice 2</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="FilterV2">
+     <property name="geometry">
+      <rect>
+       <x>185</x>
+       <y>60</y>
+       <width>66</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Voice 3</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_5">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>60</y>
+       <width>80</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Extren</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Tiefpass">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>80</y>
+       <width>76</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Tiefpass</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Hochpass">
+     <property name="geometry">
+      <rect>
+       <x>95</x>
+       <y>80</y>
+       <width>86</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Hochpass</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="Bandpass">
+     <property name="geometry">
+      <rect>
+       <x>185</x>
+       <y>80</y>
+       <width>91</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bandpass</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="MuteVoice2">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>80</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Voice 3 Stumm</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_28">
+     <property name="geometry">
+      <rect>
+       <x>15</x>
+       <y>110</y>
+       <width>52</width>
+       <height>14</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Volume</string>
+     </property>
+    </widget>
+    <widget class="QScrollBar" name="Volume">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>110</y>
+       <width>291</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>15</number>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Volume_Out">
+     <property name="geometry">
+      <rect>
+       <x>365</x>
+       <y>110</y>
+       <width>71</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0x00[0]</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -1544,7 +1777,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>682</width>
+     <width>463</width>
      <height>20</height>
     </rect>
    </property>
@@ -1560,7 +1793,6 @@
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="Import_REU_Image"/>
    </widget>
    <addaction name="menuImport"/>
    <addaction name="menuTools"/>

@@ -102,6 +102,26 @@ private slots:
     void on_Sustain2_valueChanged(int value);
     void on_Release2_valueChanged(int value);
 
+    void on_FilterFreq_valueChanged(int value);
+
+    void on_FilterReso_valueChanged(int value);
+
+    void on_Volume_valueChanged(int value);
+
+    void on_FilterV0_clicked();
+
+    void on_FilterV1_clicked();
+
+    void on_FilterV2_clicked();
+
+    void on_Tiefpass_clicked();
+
+    void on_Hochpass_clicked();
+
+    void on_Bandpass_clicked();
+
+    void on_MuteVoice2_clicked();
+
 private:
     void DrawWaveOut(void);
     Ui::MainWindow *ui;

@@ -89,13 +89,6 @@ void SIDClass::OneCycle()
     if(FreqConvCounter >= 1.0f)
     {
         FreqConvCounter-=(double)1.0;
-
-        //float mixer = float(OSC[0]->GetOutput()*ENV[0]->GetOutput())/(float)0xFFFFF;
-        //mixer += float(OSC[1]->GetOutput()*ENV[1]->GetOutput())/(float)0xFFFFF;
-        //mixer += float(OSC[2]->GetOutput()*ENV[2]->GetOutput())/(float)0xFFFFF;
-        //mixer /= 3.0f;
-        //SoundPuffer[SoundPufferPos++] = mixer;
-
         SoundPuffer[SoundPufferPos++] = float(Filter->GetOutput()>>3) / (float)0xFFFF;
     }
 
