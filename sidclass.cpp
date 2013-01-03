@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 02.01.2013		//
+// Letzte Änderung am 03.01.2013		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -39,6 +39,8 @@ SIDClass::SIDClass(int samplerate,int puffersize)
     OSC[1]->SetOSCDestination(OSC[2]);
     OSC[2]->SetOSCDestination(OSC[0]);
 
+    Filter = new FilterClass();
+
     Reset();
 }
 
@@ -52,6 +54,8 @@ SIDClass::~SIDClass()
         delete ENV[i];
         delete OSC[i];
     }
+
+    delete Filter;
 }
 
 void SIDClass::ResetSoundPufferPos()
@@ -79,17 +83,20 @@ void SIDClass::OneCycle()
     ENV[1]->OneCycle();
     ENV[2]->OneCycle();
 
+    Filter->OneCycle(OSC,ENV);
+
     FreqConvCounter += FreqConvAddWert;
     if(FreqConvCounter >= 1.0f)
     {
         FreqConvCounter-=(double)1.0;
 
-        float mixer = float(OSC[0]->GetOutput()*ENV[0]->GetOutput())/(float)0xFFFFF;
-        mixer += float(OSC[1]->GetOutput()*ENV[1]->GetOutput())/(float)0xFFFFF;
-        mixer += float(OSC[2]->GetOutput()*ENV[2]->GetOutput())/(float)0xFFFFF;
-        mixer /= 3.0f;
+        //float mixer = float(OSC[0]->GetOutput()*ENV[0]->GetOutput())/(float)0xFFFFF;
+        //mixer += float(OSC[1]->GetOutput()*ENV[1]->GetOutput())/(float)0xFFFFF;
+        //mixer += float(OSC[2]->GetOutput()*ENV[2]->GetOutput())/(float)0xFFFFF;
+        //mixer /= 3.0f;
+        //SoundPuffer[SoundPufferPos++] = mixer;
 
-        SoundPuffer[SoundPufferPos++] = mixer;
+        SoundPuffer[SoundPufferPos++] = float(Filter->GetOutput()>>3) / (float)0xFFFF;
     }
 
     /// SIDDump Klasse vom Emu64 für Testzwecke ///
@@ -119,6 +126,9 @@ void SIDClass::Reset()
     Ctrl1 = 0;
     Ctrl2 = 0;
 
+    FilterFreqLo = 0;
+    FilterFreqHi = 0;
+
     OSC[0]->Reset();
     OSC[1]->Reset();
     OSC[2]->Reset();
@@ -126,6 +136,8 @@ void SIDClass::Reset()
     ENV[0]->Reset();
     ENV[1]->Reset();
     ENV[2]->Reset();
+
+    Filter->Reset();
 }
 
 void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
@@ -215,6 +227,21 @@ void SIDClass::WriteIO(unsigned short adresse, unsigned char wert)
     case 20: // Sustain & Release Stimme 2
         ENV[2]->SetSustainRelease(wert);
         break;
+    case 21: // Filterfrequenz LoByte
+        FilterFreqLo = wert;
+        Filter->SetFrequenz((FilterFreqHi<<3) | (FilterFreqLo & 0x07));
+        break;
+    case 22: // Filterfrequenz HByte
+        FilterFreqHi = wert;
+        Filter->SetFrequenz((FilterFreqHi<<3) | (FilterFreqLo & 0x07));
+        break;
+    case 23: // FilterControl1
+        Filter->SetControl1(wert);
+        break;
+    case 24: // FilterControl2
+        Filter->SetControl2(wert);
+        break;
+
     default:
         break;
     }

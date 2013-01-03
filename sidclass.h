@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek     //
 //						//
-// Letzte Änderung am 31.12.2012		//
+// Letzte Änderung am 03.01.2013		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -17,6 +17,7 @@
 
 #include <oscclass.h>
 #include <envclass.h>
+#include <filterclass.h>
 #include <siddump.h>
 
 class SIDClass
@@ -47,6 +48,7 @@ private:
     SIDDumpClass    *IODump;                // Wird benötigt um SIDDump Files vom Emu64 zu laden (Diese Klasse wird im Emu64 gepflegt)
     OSCClass        *OSC[3];                // Alle 3 Oszillatoren
     ENVClass        *ENV[3];                // Alle 3 Hüllkurvengeneratoren
+    FilterClass     *Filter;                // Filter
 
     /// Alle IO Register ///
     unsigned char   IO[32];
@@ -65,6 +67,8 @@ private:
     unsigned char   Ctrl0;
     unsigned char   Ctrl1;
     unsigned char   Ctrl2;
+    unsigned char   FilterFreqLo;
+    unsigned char   FilterFreqHi;
 };
 
 #endif // SIDCLASS_H

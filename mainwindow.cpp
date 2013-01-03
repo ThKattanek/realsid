@@ -15,11 +15,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#define SAMPLERATE 48000
-#define PUFFERSIZE 1920
+#define SAMPLERATE 96000
+#define PUFFERSIZE 3840
 
-#define WaveOutXW 200
-#define WaveOutYW 100
+#define WaveOutXW 320
+#define WaveOutYW 200
 
 void AudioMix(void *userdata, Uint8 *stream, int laenge);
 
@@ -91,7 +91,7 @@ void MainWindow::AudioLoop(short* stream, int laenge)
 
     for(int i=0; i<(laenge/2);i++)
     {
-        SoundPuffer[i] = (unsigned short)(SidPuffer[i]* 0.5f * 0xFFFF);
+        SoundPuffer[i] = (unsigned short)(SidPuffer[i]* 1.0f * 0x7FFF);
     }
     DrawWaveOut();
 }
@@ -152,10 +152,10 @@ void MainWindow::DrawWaveOut(void)
 
     int AktY = 0;
     float *sid_puffer = sid->GetSoundPuffer();
-    int OldY = sid_puffer[0]*-1 * WaveOutYW/2 + WaveOutYW/2;
+    int OldY = sid_puffer[0]*-1.5f * WaveOutYW/2 + WaveOutYW/2;
     for (int i=0;i<WaveOutXW;i++)
     {
-        AktY = sid_puffer[(int)puffer_pos]*-1 * WaveOutYW/2 + WaveOutYW/2;
+        AktY = sid_puffer[(int)puffer_pos]*-1.5f * WaveOutYW/2 + WaveOutYW/2;
         aalineColor(WaveOut,i,OldY,i,AktY,0x00ff00C0);
 
         OldY = AktY;

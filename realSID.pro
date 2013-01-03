@@ -14,14 +14,17 @@ SOURCES += main.cpp\
     sidclass.cpp \
     oscclass.cpp \
     siddump.cpp \
-    envclass.cpp
+    envclass.cpp \
+    filterclass.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
     oscclass.h \
     siddump.h \
     waves.h \
-    envclass.h
+    envclass.h \
+    filterclass.h \
+    filtercalc.h
 
 FORMS    += mainwindow.ui
 
@@ -55,6 +58,9 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
+
+
 
 
 
