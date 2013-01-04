@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/new/pictures">
-        <file>img/mos8580-pic.png</file>
+    <qresource prefix="/img">
+        <file alias="splash">img/splash.png</file>
     </qresource>
 </RCC>

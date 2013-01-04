@@ -14,6 +14,9 @@
    <string>realSID MOS-8580R5</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
