@@ -15,7 +15,8 @@ SOURCES += main.cpp\
     oscclass.cpp \
     siddump.cpp \
     envclass.cpp \
-    filterclass.cpp
+    filterclass.cpp \
+    sequenzerclass.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
@@ -24,7 +25,8 @@ HEADERS  += mainwindow.h \
     waves.h \
     envclass.h \
     filterclass.h \
-    filtercalc.h
+    filtercalc.h \
+    sequenzerclass.h
 
 FORMS    += mainwindow.ui
 
@@ -59,6 +61,8 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
+
 
 
 
