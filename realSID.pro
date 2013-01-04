@@ -34,7 +34,8 @@ OTHER_FILES += \
     referenz/dane-crest-mos-8580r5.ogg \
     referenz/dane-crest.sdp \
     sid-wave-capture.asm \
-    SID-Artikel.pdf
+    SID-Artikel.pdf \
+    img/mos8580-pic.png
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -58,6 +59,7 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
 
 
 
