@@ -1796,11 +1796,16 @@
     <property name="title">
      <string>Tools</string>
     </property>
+    <addaction name="actionSequenzer"/>
    </widget>
    <addaction name="menuImport"/>
    <addaction name="menuTools"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -1808,7 +1813,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="Open_SidDump">
    <property name="text">
     <string>Emu64 SID Dump File laden (*.sdp)</string>
@@ -1832,6 +1836,11 @@
   <action name="Import_REU_Image">
    <property name="text">
     <string>Mischwellen (3,5,6,7) von REU-Image laden</string>
+   </property>
+  </action>
+  <action name="actionSequenzer">
+   <property name="text">
+    <string>Sequenzer</string>
    </property>
   </action>
  </widget>

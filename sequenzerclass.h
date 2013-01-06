@@ -1,10 +1,91 @@
 #ifndef SEQUENZERCLASS_H
 #define SEQUENZERCLASS_H
 
+#define PAL_TAKT 985250         /// 985248 /  50 = 19705
+
+/// Alle Notenfrequenzen C0 - H7 (8 Oktaven)
+const float NotenFrequenzen[96] =
+{   16.4f,17.3f,18.4f,19.4f,20.6f,21.8f,23.1f,24.5f,26.0f,27.5f,29.1f,30.9f,
+    32.7f,34.6f,36.7f,38.9f,41.2f,43.7f,46.2f,49.0f,51.9f,55.0f,58.3f,61.7f,
+    65.4f,69.3f,73.4f,77.8f,82.4f,87.3f,92.5f,98.0f,103.8f,110.0f,116.5f,123.5f,
+    130.8f,138.6f,146.8f,155.6f,164.8f,174.6f,185.0f,196.0f,207.7f,220.0f,233.1f,246.9f,
+    261.6f,277.2f,293.7f,311.1f,329.6f,349.2f,370.0f,392.0f,415.3f,440.0f,466.2f,493.9f,
+    523.3f,554.4f,587.3f,622.3f,659.3f,698.5f,740.0f,784.0f,830.6f,880.0f,932.3f,987.8f,
+    1046.5f,1108.7f,1174.7f,1244.5f,1318.5f,1396.9f,1480.0f,1568.0f,1661.2f,1760.0f,1864.7f,1975.5f,
+    2093.0f,2217.5f,2349.3f,2489.0f,2637.0f,2793.8f,2960.0f,3136.0f,3322.4f,3520.0f,3729.3f,3729.3
+};
+
+#define MAX_STEPS   1024
+#define MAX_PATTERN 1024
+#define PATTERN_LEN 32
+#define MAX_SOUNDS  1024
+
+struct TRACK
+{
+    unsigned short PatterNr;
+};
+
+struct STEP
+{
+    TRACK Track[8*3];
+};
+
+struct PATTERN
+{
+    unsigned char Note[PATTERN_LEN];        // 0-94 C0 - A7 Wert $ff keine Aktion
+    unsigned short SoundNr[PATTERN_LEN];    // SoundNummer
+    bool KeyOff[PATTERN_LEN];               // KeyBit wird gelöscht
+};
+
+struct SOUND
+{
+    unsigned char Waveform;
+    unsigned short Pulsweite;
+    unsigned char Attack;
+    unsigned char Decay;
+    unsigned char Sustain;
+    unsigned char Release;
+};
+
 class SequenzerClass
 {
 public:
     SequenzerClass();
+    ~SequenzerClass();
+    unsigned short OneCycle();
+    void SetBPM(int bpm);
+    void Stop(void);
+    void Play(void);
+
+private:
+    void PushSIDStack(int sid_nr, unsigned char reg_adr, unsigned char reg_wert);
+    unsigned short PullSIDStack(void);
+    void SetSIDFrequenz(int sid_nr, int voice, unsigned short frequenz);
+    void NextBeat();
+    void PlayTrack(unsigned short pattern_nr ,int sid_nr,int voice);
+    void ClearSong(void);
+    void SetDemoSong(void);
+
+    int BPMCounterStart;
+    int BPMCounter;
+    int TaktCounter;
+
+    int SIDStackLen;
+    unsigned short SIDStackPuffer[0x10000];    // Puffergröße 65536 (pro SID 8192 Words)
+    unsigned short SIDStackRead;               // Lesezeiger
+    unsigned short SIDStackWrite;              // Schreibzeiger
+
+    unsigned short SIDFrequenzen[96];
+    unsigned char ShadowIO[8][32];
+
+    STEP StepTable[MAX_STEPS];
+    PATTERN Pattern[MAX_PATTERN];
+    SOUND Sounds[MAX_SOUNDS];
+
+    bool SongPlay;
+    int SongLaenge;
+    int StepPos;
+    int PatternPos;
 };
 
 #endif // SEQUENZERCLASS_H

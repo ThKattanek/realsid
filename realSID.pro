@@ -16,7 +16,8 @@ SOURCES += main.cpp\
     siddump.cpp \
     envclass.cpp \
     filterclass.cpp \
-    sequenzerclass.cpp
+    sequenzerclass.cpp \
+    sequenzerwindow.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
@@ -26,9 +27,11 @@ HEADERS  += mainwindow.h \
     envclass.h \
     filterclass.h \
     filtercalc.h \
-    sequenzerclass.h
+    sequenzerclass.h \
+    sequenzerwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    sequenzerwindow.ui
 
 OTHER_FILES += \
     liesmich.txt \
@@ -38,7 +41,9 @@ OTHER_FILES += \
     sid-wave-capture.asm \
     SID-Artikel.pdf \
     img/mos8580-pic.png \
-    img/splash.png
+    img/splash.png \
+    SequenzerClass.odt \
+    SequenzerClass.pdf
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -62,6 +67,17 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
+
+
+
+
+
+
+
+
+
+
 
 
 

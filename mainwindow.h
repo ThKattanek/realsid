@@ -7,7 +7,7 @@
 //						//
 // Geistiges Eigentum von Thorsten Kattanek	//
 //						//
-// Letzte Änderung am 31.12.2012		//
+// Letzte Änderung am 05.01.2012		//
 //      					//
 //						//
 //////////////////////////////////////////////////
@@ -22,7 +22,11 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_gfxPrimitives.h>
 
+#include <sequenzerwindow.h>
 #include <sidclass.h>
+#include <sequenzerclass.h>
+
+#define SID_ANZAHL 4
 
 namespace Ui {
     class MainWindow;
@@ -103,26 +107,21 @@ private slots:
     void on_Release2_valueChanged(int value);
 
     void on_FilterFreq_valueChanged(int value);
-
     void on_FilterReso_valueChanged(int value);
-
     void on_Volume_valueChanged(int value);
-
     void on_FilterV0_clicked();
-
     void on_FilterV1_clicked();
-
     void on_FilterV2_clicked();
-
     void on_Tiefpass_clicked();
-
     void on_Hochpass_clicked();
-
     void on_Bandpass_clicked();
-
     void on_MuteVoice2_clicked();
 
+    void on_actionSequenzer_triggered();
+
 private:
+    SequenzerWindow *sequenzer_win;
+
     void DrawWaveOut(void);
     Ui::MainWindow *ui;
     SDL_Surface *WaveOut;
@@ -130,7 +129,12 @@ private:
     bool DrawingWaveOut;
     bool NoDrawingWaveOut;
 
-    SIDClass *sid;
+    SIDClass *sid[SID_ANZAHL];
+    float *SidPuffer[SID_ANZAHL];
+
+    int AktSID;
+
+    SequenzerClass *seq;
 };
 
 #endif // MAINWINDOW_H

@@ -19,7 +19,7 @@ SIDClass::SIDClass(int samplerate,int puffersize)
     SampleRate = (float)samplerate;
     PufferSize = puffersize;
 
-    FreqConvAddWert=1.0f/((float)985248.6111/SampleRate);  // PAL (17734472 / 18) NTSC (14318180 / 14)
+    FreqConvAddWert=1.0f/((float)985250/SampleRate);  // PAL (17734472 / 18) NTSC (14318180 / 14)
     FreqConvCounter=0.0f;
 
     SoundPuffer = new float[puffersize];
