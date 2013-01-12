@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: sequenzerclass.cpp                    //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #include "sequenzerclass.h"
 
 SequenzerClass::SequenzerClass()

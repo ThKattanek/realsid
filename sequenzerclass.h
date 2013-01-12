@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: sequenzerclass.h                      //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #ifndef SEQUENZERCLASS_H
 #define SEQUENZERCLASS_H
 
@@ -65,6 +79,7 @@ public:
     unsigned short OneCycle();
     void SetBPM(int bpm);
     PATTERN *GetPatternPointer(int nr);
+    void ClearSong(void);
     void Stop(void);
     void Play(void);
 
@@ -75,7 +90,6 @@ private:
     void NextBeat();
     void PlayTrack(unsigned short pattern_nr ,int sid_nr,int voice);
     void DecrementKeyOffCounters(void);
-    void ClearSong(void);
     void SetDemoSong(void);
 
 

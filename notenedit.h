@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: notenedit.h                           //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #ifndef NOTENEDIT_H
 #define NOTENEDIT_H
 

@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: sequenzerwindow.h                     //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #ifndef SEQUENZERWINDOW_H
 #define SEQUENZERWINDOW_H
 
@@ -29,6 +43,7 @@ private slots:
     void onBPMChange(int value);
     void onPlaySongClick();
     void onStopSongClick();
+    void onClearSongClick();
     void onSoundNrChange(int id, int value);
     void onNoteChange(int id, int value);
 
@@ -41,6 +56,7 @@ private:
     QSpinBox *BPM;
     QPushButton *PlaySong;
     QPushButton *StopSong;
+    QPushButton *ClearSong;
     QStringList list;
 
     PATTERN *AktPattern;

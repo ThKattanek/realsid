@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: notenedit.cpp                         //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #include "notenedit.h"
 
 const QString VollNoten[7]={"C","D","E","F","G","A","H"};

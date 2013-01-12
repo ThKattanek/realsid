@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////
+//						//
+// realSID                                      //
+// von Thorsten Kattanek			//
+//                                              //
+// #file: sequenzerwindow.cpp                   //
+//						//
+// Geistiges Eigentum von Thorsten Kattanek	//
+//						//
+// Letzte Änderung am 12.01.2013		//
+//      					//
+//						//
+//////////////////////////////////////////////////
+
 #include "sequenzerwindow.h"
 #include "ui_sequenzerwindow.h"
 
@@ -24,6 +38,9 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
     StopSong = new QPushButton("Stop");
     connect(StopSong,SIGNAL(clicked()),this,SLOT(onStopSongClick()));
     ui->toolBar->addWidget(StopSong);
+    ClearSong = new QPushButton("Alles Löschen");
+    connect(ClearSong,SIGNAL(clicked()),this,SLOT(onClearSongClick()));
+    ui->toolBar->addWidget(ClearSong);
 
     ui->PatternTable->setRowCount(PATTERN_LEN);
     ui->PatternTable->setColumnCount(2);
@@ -73,6 +90,14 @@ void SequenzerWindow::onStopSongClick()
     seq->Stop();
 }
 
+void SequenzerWindow::onClearSongClick()
+{
+    seq->ClearSong();
+
+    ui->PatternNr->setValue(0);
+    FillPatternList();
+}
+
 void SequenzerWindow::on_PatternNr_valueChanged(int value)
 {
     AktPattern = seq->GetPatternPointer(value);
@@ -81,13 +106,11 @@ void SequenzerWindow::on_PatternNr_valueChanged(int value)
 
 void SequenzerWindow::onSoundNrChange(int id, int sound_nr)
 {
-    //QMessageBox::information(this,QVariant(id).toString(),QVariant(value).toString());
     AktPattern->SoundNr[id] = sound_nr;
 }
 
 void SequenzerWindow::onNoteChange(int id, int noten_nr)
 {
-    //QMessageBox::information(this,QVariant(id).toString(),QVariant(noten_nr).toString());
     AktPattern->Note[id] = noten_nr;
 }
 
