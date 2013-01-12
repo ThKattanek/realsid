@@ -30,7 +30,7 @@ SequenzerClass::SequenzerClass()
         SIDFrequenzen[i] = (NotenFrequenzen[i] * 16777216) /  PAL_TAKT;
     }
 
-    for(int i=0;i<24;i++)
+    for(int i=0;i<(SID_ANZAHL*3);i++)
         KeyOffCounter[i] = 0;
 
     ClearSong();
@@ -52,7 +52,7 @@ unsigned short SequenzerClass::OneCycle()
         /// SongPlay geht von 1 auf 0 ///
         /// Alle SID Register löschen !!
 
-        for(int sid_nr=0;sid_nr<8;sid_nr++)
+        for(int sid_nr=0;sid_nr<SID_ANZAHL;sid_nr++)
         {
             for(int i=0;i<29;i++) PushSIDStack(sid_nr,i,0);
         }
@@ -92,10 +92,30 @@ void SequenzerClass::SetBPM(int bpm)
     BPMCounter = BPMCounterStart;
 }
 
+void SequenzerClass::SetSongLength(int length)
+{
+    if(length >= MAX_STEPS) return;
+    SongPlay = false;
+    StepPos = 0;
+    PatternPos = 0;
+    SongLaenge = length;
+}
+
 PATTERN* SequenzerClass::GetPatternPointer(int nr)
 {
     if(nr >= MAX_PATTERN) return 0;
     return &Pattern[nr];
+}
+
+SOUND* SequenzerClass::GetSoundPointer(int nr)
+{
+    if(nr >= MAX_SOUNDS) return 0;
+    return &Sounds[nr];
+}
+
+STEP* SequenzerClass::GetStepTablePointer()
+{
+    return StepTable;
 }
 
 void SequenzerClass::Play()
@@ -138,6 +158,12 @@ void SequenzerClass::SetSIDFrequenz(int sid_nr, int voice, unsigned short freque
     PushSIDStack(sid_nr,voice*7+1,frequenz >> 8);
 }
 
+void SequenzerClass::SetSIDPulse(int sid_nr, int voice, unsigned short pulse)
+{
+    PushSIDStack(sid_nr,voice*7+2,pulse & 0xff);
+    PushSIDStack(sid_nr,voice*7+3,pulse >> 8);
+}
+
 void SequenzerClass::ClearSong()
 {
     SongPlay = false;
@@ -161,7 +187,7 @@ void SequenzerClass::ClearSong()
     /// StepTable löschen
     for(int i=0;i<MAX_STEPS;i++)
     {
-        for(int j=0;j<24;j++)
+        for(int j=0;j<(SID_ANZAHL*3);j++)
             StepTable[i].Track[j].PatterNr = 0xffff;
     }
 
@@ -182,7 +208,7 @@ void SequenzerClass::SetDemoSong()
     StepTable[0].Track[0].PatterNr = 0;
     StepTable[0].Track[1].PatterNr = 1;
 
-    Sounds[0].Attack = 0x00;
+    Sounds[0].Attack = 0x04;
     Sounds[0].Decay = 0x04;
     Sounds[0].Sustain = 0x0f;
     Sounds[0].Release = 0x06;
@@ -209,24 +235,13 @@ void SequenzerClass::SetDemoSong()
         Pattern[1].Note[i*2+0]=25;
         Pattern[1].SoundNr[i*2+0]=1;
     }
-
-    /*
-    Pattern[0].Note[0]=33;
-    Pattern[0].KeyOff[1] = true;
-    Pattern[0].Note[8]=38;
-    Pattern[0].KeyOff[9] = true;
-    Pattern[0].Note[16]=33;
-    Pattern[0].KeyOff[17] = true;
-    Pattern[0].Note[24]=38;
-    Pattern[0].KeyOff[25] = true;
-    */
 }
 
 void SequenzerClass::NextBeat()
 {
     if(SongLaenge == 0) return;
 
-    for(int sid_nr=0;sid_nr<8;sid_nr++)
+    for(int sid_nr=0;sid_nr<SID_ANZAHL;sid_nr++)
     {
         for(int voice=0;voice<3;voice++)
             PlayTrack(StepTable[StepPos].Track[sid_nr*3+voice].PatterNr,sid_nr,voice);
@@ -249,11 +264,12 @@ void SequenzerClass::PlayTrack(unsigned short pattern_nr, int sid_nr, int voice)
     unsigned char Note = Pattern[pattern_nr].Note[PatternPos];
     unsigned short SoundNr = Pattern[pattern_nr].SoundNr[PatternPos];
 
-    PushSIDStack(sid_nr,24,15);
+    PushSIDStack(sid_nr,24,(ShadowIO[sid_nr][24] & 0xf0) | 15);
 
     if(Note == 0xff) return;
 
     SetSIDFrequenz(sid_nr,voice,SIDFrequenzen[Note]);
+    SetSIDPulse(sid_nr,voice,Sounds[SoundNr].Pulsweite);
     PushSIDStack(sid_nr,voice*7+5,(Sounds[SoundNr].Attack<<4) | (Sounds[SoundNr].Decay));
     PushSIDStack(sid_nr,voice*7+6,(Sounds[SoundNr].Sustain<<4) | (Sounds[SoundNr].Release));
     PushSIDStack(sid_nr,voice*7+4,(ShadowIO[sid_nr][voice*7+4] & 0x0D) | (Sounds[SoundNr].Waveform<<4) | 1);
@@ -263,7 +279,7 @@ void SequenzerClass::PlayTrack(unsigned short pattern_nr, int sid_nr, int voice)
 
 void SequenzerClass::DecrementKeyOffCounters()
 {
-    for(int sid_nr=0;sid_nr<8;sid_nr++)
+    for(int sid_nr=0;sid_nr<SID_ANZAHL;sid_nr++)
     {
         for(int voice=0;voice<3;voice++)
         {

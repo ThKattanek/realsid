@@ -15,7 +15,8 @@
 #ifndef SEQUENZERCLASS_H
 #define SEQUENZERCLASS_H
 
-#define PAL_TAKT 985250         /// 985248 /  50 = 19705
+#define PAL_TAKT 985250         /// C64 Taktfrequenz für PAL Geräte (985248 /  50 = 19705)
+#define SID_ANZAHL 1            /// Anzahl der anzusprechenden SID's
 
 /// Alle Notenfrequenzen C0 - H7 (8 Oktaven)
 const float NotenFrequenzen[96] =
@@ -39,9 +40,9 @@ const int DecayTime[16] =
     4*2*985.2,3*8*985.2,3*16*985.2,3*24*985.2,3*38*985.2,3*56*985.2,3*68*985.2,3*80*985.2,3*100*985.2,3*250*985.2,3*500*985.2,3*800*985.2,3*1000*985.2,3*3000*985.2,3*5000*985.2,3*8000*985.2
 };
 
-#define MAX_STEPS   1024
+#define MAX_STEPS   256
 #define MAX_PATTERN 256
-#define PATTERN_LEN 32
+#define PATTERN_LEN 16
 #define MAX_SOUNDS  256
 
 struct TRACK
@@ -51,12 +52,12 @@ struct TRACK
 
 struct STEP
 {
-    TRACK Track[8*3];
+    TRACK Track[SID_ANZAHL*3];
 };
 
 struct PATTERN
 {
-    unsigned char Note[PATTERN_LEN];        // 0-94 C0 - A7 Wert $ff keine Aktion
+    unsigned char Note[PATTERN_LEN];        // 0-83 C0 - H6 Wert $ff keine Aktion
     unsigned short SoundNr[PATTERN_LEN];    // SoundNummer
 };
 
@@ -68,6 +69,7 @@ struct SOUND
     unsigned char Decay;
     unsigned char Sustain;
     unsigned char Release;
+    bool          Ring;
 };
 
 class SequenzerClass
@@ -78,7 +80,11 @@ public:
 
     unsigned short OneCycle();
     void SetBPM(int bpm);
+    void SetSongLength(int length);
     PATTERN *GetPatternPointer(int nr);
+    SOUND   *GetSoundPointer(int nr);
+    STEP    *GetStepTablePointer(void);
+
     void ClearSong(void);
     void Stop(void);
     void Play(void);
@@ -87,6 +93,7 @@ private:
     void PushSIDStack(int sid_nr, unsigned char reg_adr, unsigned char reg_wert);
     unsigned short PullSIDStack(void);
     void SetSIDFrequenz(int sid_nr, int voice, unsigned short frequenz);
+    void SetSIDPulse(int sid_nr, int voice, unsigned short pulse);
     void NextBeat();
     void PlayTrack(unsigned short pattern_nr ,int sid_nr,int voice);
     void DecrementKeyOffCounters(void);
@@ -102,19 +109,19 @@ private:
     unsigned short SIDStackRead;               // Lesezeiger
     unsigned short SIDStackWrite;              // Schreibzeiger
 
-    unsigned short SIDFrequenzen[96];
-    unsigned char ShadowIO[8][32];
+    unsigned short SIDFrequenzen[96];          // Umgerechnete Frequenzwerte für SID Register
+    unsigned char ShadowIO[SID_ANZAHL][32];    // SID Registerzwischenspeicher da SID keine READ zulässt
 
-    STEP StepTable[MAX_STEPS];
-    PATTERN Pattern[MAX_PATTERN];
-    SOUND Sounds[MAX_SOUNDS];
-    unsigned long
-    int KeyOffCounter[8*3];
+    STEP StepTable[MAX_STEPS];                 // Tabelle mit Patternnummern
+    PATTERN Pattern[MAX_PATTERN];              // Tabelle mit Noten und SoundNr
+    SOUND Sounds[MAX_SOUNDS];                  // Tabelle mit SoundParametern
 
-    bool SongPlay;
-    int SongLaenge;
-    int StepPos;
-    int PatternPos;
+    int KeyOffCounter[SID_ANZAHL*3];           // Counter (Wenn 0 wird SID KeyBit auf NULL gesetzt
+
+    bool SongPlay;                             // Wenn TRUE wird StepTabe abespielt
+    int SongLaenge;                            // Enthält die Länge(Steps) des Songs
+    int StepPos;                               // Aktuelle Position des Sequenzers innerhalb der StepTable
+    int PatternPos;                            // Aktuelle Position des Sequenzers innerhalb des akt Pattern
 };
 
 #endif // SEQUENZERCLASS_H

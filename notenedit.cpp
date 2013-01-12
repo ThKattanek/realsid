@@ -19,6 +19,7 @@ const int VollNotenPos[7]={0,2,4,5,7,9,11};
 const bool    Halbnoten[7]={true,true,false,true,true,true,false};
 const QString Oktaven[7]={"0","1","2","3","4","5","6"};
 const QString NotenString[12]={"C","C#","D","D#","E","F","F#","G","G#","A","A#","H"};
+const int VollNotenTbl[12]={0,0,1,1,2,3,3,4,4,5,5,6};
 
 NotenEdit::NotenEdit(int id, QWidget *parent) :
     QLineEdit(parent)
@@ -40,6 +41,7 @@ void NotenEdit::SetNote(int noten_nummer)
     }
 
     Oktave = noten_nummer / 12;       // Nachkomma des Ergebnisses wird hier nicht gespeichert !
+    VollNote = VollNotenTbl[noten_nummer - (Oktave * 12)];
 
     this->setText(NotenString[noten_nummer - (Oktave * 12)]+QVariant(Oktave).toString());
 }
