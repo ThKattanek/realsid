@@ -26,9 +26,9 @@ const int DecayTime[16] =
 };
 
 #define MAX_STEPS   1024
-#define MAX_PATTERN 1024
+#define MAX_PATTERN 256
 #define PATTERN_LEN 32
-#define MAX_SOUNDS  1024
+#define MAX_SOUNDS  256
 
 struct TRACK
 {

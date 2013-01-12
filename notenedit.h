@@ -9,6 +9,7 @@ class NotenEdit : public QLineEdit
     Q_OBJECT
 public:
     explicit NotenEdit(int id, QWidget *parent = 0);
+    void SetNote(int noten_nummer);
     
 signals:
     void ChangeNote(int id, int note_nr);

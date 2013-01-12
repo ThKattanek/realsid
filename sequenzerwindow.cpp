@@ -14,8 +14,8 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
     connect(BPM, SIGNAL(valueChanged(int)),this,SLOT(onBPMChange(int)));
     BPM->setMaximum(999);
     BPM->setMinimum(0);
-    BPM->setValue(120);
-    seq->SetBPM(120);
+    BPM->setValue(230);
+    seq->SetBPM(230);
     ui->toolBar->addWidget(BPM);
 
     PlaySong = new QPushButton("Play");
@@ -67,6 +67,7 @@ void SequenzerWindow::onPlaySongClick()
 {
     seq->Play();
 }
+
 void SequenzerWindow::onStopSongClick()
 {
     seq->Stop();
@@ -78,23 +79,29 @@ void SequenzerWindow::on_PatternNr_valueChanged(int value)
     FillPatternList();
 }
 
-void SequenzerWindow::onSoundNrChange(int id, int value)
+void SequenzerWindow::onSoundNrChange(int id, int sound_nr)
 {
     //QMessageBox::information(this,QVariant(id).toString(),QVariant(value).toString());
+    AktPattern->SoundNr[id] = sound_nr;
 }
 
 void SequenzerWindow::onNoteChange(int id, int noten_nr)
 {
+    //QMessageBox::information(this,QVariant(id).toString(),QVariant(noten_nr).toString());
+    AktPattern->Note[id] = noten_nr;
 }
 
 void SequenzerWindow::FillPatternList()
 {
-   // ui->PatternTable->item(0,0)->setText("a");
-    /*
+    NotenEdit *noten_edit;
+    SpinBox *soundnr_edit;
+
     for(int i=0;i<PATTERN_LEN;i++)
     {
-        //ui->PatternTable->item(1,i)->setText(QVariant(AktPattern->SoundNr[i]).toString());
-        ui->PatternTable->item(i,0)->setText("a");
+        noten_edit = (NotenEdit*)ui->PatternTable->cellWidget(i,0);
+        noten_edit->SetNote(AktPattern->Note[i]);
+
+        soundnr_edit = (SpinBox*)ui->PatternTable->cellWidget(i,1);
+        soundnr_edit->setValue(AktPattern->SoundNr[i]);
     }
-    */
 }

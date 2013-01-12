@@ -1,9 +1,10 @@
 #include "notenedit.h"
 
-const QString VollNoten[7]={"C","D","E","F","G","H","A"};
+const QString VollNoten[7]={"C","D","E","F","G","A","H"};
 const int VollNotenPos[7]={0,2,4,5,7,9,11};
 const bool    Halbnoten[7]={true,true,false,true,true,true,false};
 const QString Oktaven[7]={"0","1","2","3","4","5","6"};
+const QString NotenString[12]={"C","C#","D","D#","E","F","F#","G","G#","A","A#","H"};
 
 NotenEdit::NotenEdit(int id, QWidget *parent) :
     QLineEdit(parent)
@@ -13,11 +14,33 @@ NotenEdit::NotenEdit(int id, QWidget *parent) :
     this->setMaxLength(3);
 }
 
+void NotenEdit::SetNote(int noten_nummer)
+{
+    if(noten_nummer > 83 && noten_nummer != 255) return;
+        NotenNummer = noten_nummer;
+
+    if(noten_nummer == 255)
+    {
+        this->setText("");
+        return;
+    }
+
+    Oktave = noten_nummer / 12;       // Nachkomma des Ergebnisses wird hier nicht gespeichert !
+
+    this->setText(NotenString[noten_nummer - (Oktave * 12)]+QVariant(Oktave).toString());
+}
+
 void NotenEdit::OnTextEdited(const QString &text)
 {
     bool found = false;
 
     QString input = text.toUpper();
+
+    if(text == "")
+    {
+        NotenNummer = 255;
+        emit ChangeNote(ID,NotenNummer);
+    }
 
     switch(text.length())
     {
@@ -56,8 +79,9 @@ void NotenEdit::OnTextEdited(const QString &text)
             if(found)
             {
                 this->setText(input);
+                NotenNummer = CalcNotenNummer(VollNote,Halbkennung,Oktave);
                 /// Fertige Note via emit senden
-                QMessageBox::information(this,"Info","Note gefunden :" + QVariant(CalcNotenNummer(VollNote,Halbkennung,Oktave)).toString());
+                emit ChangeNote(ID,NotenNummer);
             }
             else this->setText(input.left(1));
         }
@@ -76,8 +100,9 @@ void NotenEdit::OnTextEdited(const QString &text)
             if(found)
             {
                 this->setText(input);
+                NotenNummer = CalcNotenNummer(VollNote,Halbkennung,Oktave);
                 /// Fertige Note via emit senden
-                QMessageBox::information(this,"Info","Note gefunden :" + QVariant(CalcNotenNummer(VollNote,Halbkennung,Oktave)).toString());
+                emit ChangeNote(ID,NotenNummer);
             }
             else this->setText(input.left(2));
         }

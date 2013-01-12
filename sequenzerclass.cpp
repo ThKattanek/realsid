@@ -250,6 +250,7 @@ void SequenzerClass::PlayTrack(unsigned short pattern_nr, int sid_nr, int voice)
 void SequenzerClass::DecrementKeyOffCounters()
 {
     for(int sid_nr=0;sid_nr<8;sid_nr++)
+    {
         for(int voice=0;voice<3;voice++)
         {
             if(KeyOffCounter[sid_nr*3+voice]>0)
@@ -262,4 +263,5 @@ void SequenzerClass::DecrementKeyOffCounters()
                 }
             }
         }
+    }
 }
