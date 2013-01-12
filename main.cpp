@@ -32,8 +32,8 @@ int main(int argc, char *argv[])
 
     MainWindow w;
 
-    QTimer::singleShot(2500, splash, SLOT(close()));
-    QTimer::singleShot(2500, &w, SLOT(show()));
+    QTimer::singleShot(250, splash, SLOT(close()));
+    QTimer::singleShot(250, &w, SLOT(show()));
 
     return a.exec();
 }

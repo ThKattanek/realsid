@@ -26,7 +26,7 @@
 #include <sidclass.h>
 #include <sequenzerclass.h>
 
-#define SID_ANZAHL 4
+#define SID_ANZAHL 1
 
 namespace Ui {
     class MainWindow;

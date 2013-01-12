@@ -17,7 +17,9 @@ SOURCES += main.cpp\
     envclass.cpp \
     filterclass.cpp \
     sequenzerclass.cpp \
-    sequenzerwindow.cpp
+    sequenzerwindow.cpp \
+    spinbox.cpp \
+    notenedit.cpp
 
 HEADERS  += mainwindow.h \
     sidclass.h \
@@ -28,7 +30,9 @@ HEADERS  += mainwindow.h \
     filterclass.h \
     filtercalc.h \
     sequenzerclass.h \
-    sequenzerwindow.h
+    sequenzerwindow.h \
+    spinbox.h \
+    notenedit.h
 
 FORMS    += mainwindow.ui \
     sequenzerwindow.ui
@@ -67,6 +71,8 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
+
 
 
 

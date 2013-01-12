@@ -15,6 +15,16 @@ const float NotenFrequenzen[96] =
     2093.0f,2217.5f,2349.3f,2489.0f,2637.0f,2793.8f,2960.0f,3136.0f,3322.4f,3520.0f,3729.3f,3729.3
 };
 
+const int AttackTime[16] =
+{
+    2*985.2,8*985.2,16*985.2,24*985.2,38*985.2,56*985.2,68*985.2,80*985.2,100*985.2,250*985.2,500*985.2,800*985.2,1000*985.2,3000*985.2,5000*985.2,8000*985.2
+};
+
+const int DecayTime[16] =
+{
+    4*2*985.2,3*8*985.2,3*16*985.2,3*24*985.2,3*38*985.2,3*56*985.2,3*68*985.2,3*80*985.2,3*100*985.2,3*250*985.2,3*500*985.2,3*800*985.2,3*1000*985.2,3*3000*985.2,3*5000*985.2,3*8000*985.2
+};
+
 #define MAX_STEPS   1024
 #define MAX_PATTERN 1024
 #define PATTERN_LEN 32
@@ -34,7 +44,6 @@ struct PATTERN
 {
     unsigned char Note[PATTERN_LEN];        // 0-94 C0 - A7 Wert $ff keine Aktion
     unsigned short SoundNr[PATTERN_LEN];    // SoundNummer
-    bool KeyOff[PATTERN_LEN];               // KeyBit wird gelöscht
 };
 
 struct SOUND
@@ -52,8 +61,10 @@ class SequenzerClass
 public:
     SequenzerClass();
     ~SequenzerClass();
+
     unsigned short OneCycle();
     void SetBPM(int bpm);
+    PATTERN *GetPatternPointer(int nr);
     void Stop(void);
     void Play(void);
 
@@ -63,8 +74,10 @@ private:
     void SetSIDFrequenz(int sid_nr, int voice, unsigned short frequenz);
     void NextBeat();
     void PlayTrack(unsigned short pattern_nr ,int sid_nr,int voice);
+    void DecrementKeyOffCounters(void);
     void ClearSong(void);
     void SetDemoSong(void);
+
 
     int BPMCounterStart;
     int BPMCounter;
@@ -81,6 +94,8 @@ private:
     STEP StepTable[MAX_STEPS];
     PATTERN Pattern[MAX_PATTERN];
     SOUND Sounds[MAX_SOUNDS];
+    unsigned long
+    int KeyOffCounter[8*3];
 
     bool SongPlay;
     int SongLaenge;
