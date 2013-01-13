@@ -13,6 +13,8 @@
 //////////////////////////////////////////////////
 
 #include "sequenzerclass.h"
+#include <fstream>
+#include <cstring>
 
 SequenzerClass::SequenzerClass()
 {
@@ -34,7 +36,6 @@ SequenzerClass::SequenzerClass()
         KeyOffCounter[i] = 0;
 
     ClearSong();
-    SetDemoSong();
 }
 
 SequenzerClass::~SequenzerClass()
@@ -87,9 +88,15 @@ unsigned short SequenzerClass::OneCycle()
 
 void SequenzerClass::SetBPM(int bpm)
 {
+    BPM = bpm;
     if(bpm == 0) BPMCounterStart = 0;
     else BPMCounterStart = (PAL_TAKT * 60) / bpm;
     BPMCounter = BPMCounterStart;
+}
+
+int SequenzerClass::GetBPM()
+{
+    return BPM;
 }
 
 void SequenzerClass::SetSongLength(int length)
@@ -99,6 +106,21 @@ void SequenzerClass::SetSongLength(int length)
     StepPos = 0;
     PatternPos = 0;
     SongLaenge = length;
+}
+
+int SequenzerClass::GetSongLength()
+{
+    return SongLaenge;
+}
+
+int SequenzerClass::GetAktStepPos()
+{
+    return StepPos;
+}
+
+int SequenzerClass::GetAktPatternPos()
+{
+    return PatternPos;
 }
 
 PATTERN* SequenzerClass::GetPatternPointer(int nr)
@@ -120,6 +142,7 @@ STEP* SequenzerClass::GetStepTablePointer()
 
 void SequenzerClass::Play()
 {
+    PushSIDStack(0,24,(ShadowIO[0][24] & 0xf0) | 15);
     SongPlay = true;
 }
 
@@ -173,6 +196,8 @@ void SequenzerClass::ClearSong()
     StepPos = 0;
     PatternPos = 0;
 
+    SetBPM(120);
+
     /// Alle Souns löschen
     for(int i=0;i<MAX_SOUNDS;i++)
     {
@@ -188,7 +213,10 @@ void SequenzerClass::ClearSong()
     for(int i=0;i<MAX_STEPS;i++)
     {
         for(int j=0;j<(SID_ANZAHL*3);j++)
-            StepTable[i].Track[j].PatterNr = 0xffff;
+        {
+            StepTable[i].Track[j].PatterNr = 0;
+            StepTable[i].Track[j].Transpose = 0;
+        }
     }
 
     /// Pattern löschen
@@ -204,9 +232,15 @@ void SequenzerClass::ClearSong()
 
 void SequenzerClass::SetDemoSong()
 {
-    SongLaenge = 1;
+    SongLaenge = 2;
+    SetBPM(120);
+
+    StepTable[0].Track[0].Transpose = -25;
     StepTable[0].Track[0].PatterNr = 0;
     StepTable[0].Track[1].PatterNr = 1;
+    StepTable[1].Track[0].Transpose = -20;
+    StepTable[1].Track[0].PatterNr = 0;
+    StepTable[1].Track[1].PatterNr = 1;
 
     Sounds[0].Attack = 0x04;
     Sounds[0].Decay = 0x04;
@@ -241,10 +275,32 @@ void SequenzerClass::NextBeat()
 {
     if(SongLaenge == 0) return;
 
+    bool break_found = false;
+
+    /// Nach XXX suchen
     for(int sid_nr=0;sid_nr<SID_ANZAHL;sid_nr++)
     {
         for(int voice=0;voice<3;voice++)
-            PlayTrack(StepTable[StepPos].Track[sid_nr*3+voice].PatterNr,sid_nr,voice);
+        {
+            int PatternNr = StepTable[StepPos].Track[sid_nr*3+voice].PatterNr;
+            if(Pattern[PatternNr].Note[PatternPos] == 254) break_found = true;
+        }
+    }
+
+    if(break_found)
+    {
+        PatternPos = 0;
+        StepPos++;
+        if(StepPos == SongLaenge)
+            StepPos = 0;
+    }
+
+    for(int sid_nr=0;sid_nr<SID_ANZAHL;sid_nr++)
+    {
+        for(int voice=0;voice<3;voice++)
+        {
+            PlayTrack(StepTable[StepPos].Track[sid_nr*3+voice].PatterNr,StepTable[StepPos].Track[sid_nr*3+voice].Transpose,sid_nr,voice);
+        }
     }
 
     PatternPos++;
@@ -255,20 +311,19 @@ void SequenzerClass::NextBeat()
         if(StepPos == SongLaenge)
             StepPos = 0;
     }
+
 }
 
-void SequenzerClass::PlayTrack(unsigned short pattern_nr, int sid_nr, int voice)
+void SequenzerClass::PlayTrack(unsigned short pattern_nr,char transpose, int sid_nr, int voice)
 {
     if(pattern_nr == 0xffff) return;
 
     unsigned char Note = Pattern[pattern_nr].Note[PatternPos];
     unsigned short SoundNr = Pattern[pattern_nr].SoundNr[PatternPos];
 
-    PushSIDStack(sid_nr,24,(ShadowIO[sid_nr][24] & 0xf0) | 15);
-
     if(Note == 0xff) return;
 
-    SetSIDFrequenz(sid_nr,voice,SIDFrequenzen[Note]);
+    SetSIDFrequenz(sid_nr,voice,SIDFrequenzen[Note+transpose]);
     SetSIDPulse(sid_nr,voice,Sounds[SoundNr].Pulsweite);
     PushSIDStack(sid_nr,voice*7+5,(Sounds[SoundNr].Attack<<4) | (Sounds[SoundNr].Decay));
     PushSIDStack(sid_nr,voice*7+6,(Sounds[SoundNr].Sustain<<4) | (Sounds[SoundNr].Release));
@@ -294,4 +349,71 @@ void SequenzerClass::DecrementKeyOffCounters()
             }
         }
     }
+}
+
+bool SequenzerClass::LoadSong(char *filename)
+{
+    FILE* file = NULL;
+
+    file = fopen (filename,"rb");
+    if (file == NULL)
+    {
+        return false;
+    }
+
+    char Kennung[10];
+    fread (&Kennung,1,10,file);
+
+    if(0 != strcmp(Kennung,"reSID_SEQ"))
+    {
+        return false;
+    }
+
+    Stop();
+
+    unsigned short Version;
+    fread(&Version,sizeof(Version),1,file);
+    if(Version == 0x0001)
+    {
+        //// Version 0001
+
+        fread (&SongLaenge,sizeof(SongLaenge),1,file);
+        fread (&BPM,sizeof(BPM),1,file);
+        SetBPM(BPM);
+
+        fread (StepTable,sizeof(StepTable),1,file);
+        fread (Pattern,sizeof(Pattern),1,file);
+        fread (Sounds,sizeof(Sounds),1,file);
+    }
+
+    fclose(file);
+    return true;
+}
+
+bool SequenzerClass::SaveSong(char *filename)
+{
+    FILE* file = NULL;
+
+    file = fopen (filename,"wb");
+    if (file == NULL)
+    {
+        return false;
+    }
+
+    char Kennung[]={"reSID_SEQ"};
+    fwrite (&Kennung,1,10,file);
+
+    unsigned short Version = 0x0001;
+    fwrite(&Version,sizeof(Version),1,file);
+
+
+    fwrite (&SongLaenge,sizeof(SongLaenge),1,file);
+    fwrite (&BPM,sizeof(BPM),1,file);
+
+    fwrite (StepTable,sizeof(StepTable),1,file);
+    fwrite (Pattern,sizeof(Pattern),1,file);
+    fwrite (Sounds,sizeof(Sounds),1,file);
+
+    fclose(file);
+    return true;
 }

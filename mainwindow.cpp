@@ -47,7 +47,6 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     seq = new SequenzerClass();
-    seq->SetBPM(20);
 
     sequenzer_win = new SequenzerWindow(this,seq);
 

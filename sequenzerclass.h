@@ -42,12 +42,13 @@ const int DecayTime[16] =
 
 #define MAX_STEPS   256
 #define MAX_PATTERN 256
-#define PATTERN_LEN 16
+#define PATTERN_LEN 32
 #define MAX_SOUNDS  256
 
 struct TRACK
 {
     unsigned short PatterNr;
+    char Transpose;
 };
 
 struct STEP
@@ -57,8 +58,10 @@ struct STEP
 
 struct PATTERN
 {
-    unsigned char Note[PATTERN_LEN];        // 0-83 C0 - H6 Wert $ff keine Aktion
-    unsigned short SoundNr[PATTERN_LEN];    // SoundNummer
+    unsigned char Note[PATTERN_LEN];                // 0-83 C0 - H6 Wert $ff keine Aktion // $fe Pattern beenden
+    unsigned short SoundNr[PATTERN_LEN];            // SoundNummer
+    unsigned char EffektNr[PATTERN_LEN];            // Effekt Nummer 0-255 0=kein Effekt
+    unsigned short EffektParameter1[PATTERN_LEN];   // Entspr. Effekt Parameter
 };
 
 struct SOUND
@@ -80,7 +83,13 @@ public:
 
     unsigned short OneCycle();
     void SetBPM(int bpm);
+    int GetBPM(void);
     void SetSongLength(int length);
+    int GetSongLength(void);
+    bool LoadSong(char* filename);
+    bool SaveSong(char* filename);
+    int GetAktStepPos(void);
+    int GetAktPatternPos(void);
     PATTERN *GetPatternPointer(int nr);
     SOUND   *GetSoundPointer(int nr);
     STEP    *GetStepTablePointer(void);
@@ -95,11 +104,12 @@ private:
     void SetSIDFrequenz(int sid_nr, int voice, unsigned short frequenz);
     void SetSIDPulse(int sid_nr, int voice, unsigned short pulse);
     void NextBeat();
-    void PlayTrack(unsigned short pattern_nr ,int sid_nr,int voice);
+    void PlayTrack(unsigned short pattern_nr ,char transpose ,int sid_nr,int voice);
     void DecrementKeyOffCounters(void);
     void SetDemoSong(void);
 
 
+    int BPM;
     int BPMCounterStart;
     int BPMCounter;
     int TaktCounter;

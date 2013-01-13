@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/img">
         <file alias="splash">img/splash.png</file>
+        <file alias="huellkurve">img/huellkurve.png</file>
+        <file alias="sid">img/mos8580-pic.png</file>
     </qresource>
 </RCC>

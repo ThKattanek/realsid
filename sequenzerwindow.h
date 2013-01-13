@@ -46,10 +46,18 @@ private slots:
     void onClearSongClick();
     void onSoundNrChange(int id, int value);
     void onNoteChange(int id, int value);
-    void onV1StepChange(int id, int value);
-    void onV2StepChange(int id, int value);
-    void onV3StepChange(int id, int value);
+    void onEffektNrChange(int id, int value);
+    void onEffektPara1Change(int id, int value);
+    void onV1StepPatternChange(int id, int value);
+    void onV2StepPatternChange(int id, int value);
+    void onV3StepPatternChange(int id, int value);
+    void onV1StepTransposeChange(int id, int value);
+    void onV2StepTransposeChange(int id, int value);
+    void onV3StepTransposeChange(int id, int value);
     void onSongLengthChange(int value);
+    void onLoadSongClick();
+    void onSaveSongClick();
+    void onTimer1();
     void on_PatternNr_valueChanged(int value);
     void on_SoundNr_valueChanged(int value);
     void on_Attack_valueChanged(int value);
@@ -59,7 +67,13 @@ private slots:
     void on_WaveForm_currentIndexChanged(int index);
     void on_Pulsweite_valueChanged(int value);
 
+    void on_ClearPattern_clicked();
+
+    void on_ClearSound_clicked();
+
 private:
+    void FillSongParameter(void);
+    void FillStepList(void);
     void FillPatternList(void);
     void FillSoundFrame(void);
 
@@ -70,11 +84,16 @@ private:
     QPushButton *PlaySong;
     QPushButton *StopSong;
     QPushButton *ClearSong;
-    QStringList list;
+    QPushButton *LoadSong;
+    QPushButton *SaveSong;
+    QStringList list0;
+    QStringList list1;
 
     STEP    *StepTable;
     PATTERN *AktPattern;
     SOUND   *AktSound;
+
+    QTimer *timer1;
 };
 
 #endif // SEQUENZERWINDOW_H

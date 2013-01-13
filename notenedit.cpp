@@ -31,12 +31,18 @@ NotenEdit::NotenEdit(int id, QWidget *parent) :
 
 void NotenEdit::SetNote(int noten_nummer)
 {
-    if(noten_nummer > 83 && noten_nummer != 255) return;
+    if(noten_nummer > 83 && noten_nummer != 255 && noten_nummer != 254) return;
         NotenNummer = noten_nummer;
 
     if(noten_nummer == 255)
     {
         this->setText("");
+        return;
+    }
+
+    if(noten_nummer == 254)
+    {
+        this->setText("XXX");
         return;
     }
 
@@ -72,8 +78,17 @@ void NotenEdit::OnTextEdited(const QString &text)
             this->setText(input);
         else
         {
-            VollNote = -1;
-            this->setText("");
+            if(input == "X")
+            {
+                this->setText("XXX");
+                NotenNummer = 254;
+                emit ChangeNote(ID,NotenNummer);
+            }
+            else
+            {
+                VollNote = -1;
+                this->setText("");
+            }
         }
         break;
 

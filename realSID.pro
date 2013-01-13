@@ -47,7 +47,8 @@ OTHER_FILES += \
     img/mos8580-pic.png \
     img/splash.png \
     SequenzerClass.odt \
-    SequenzerClass.pdf
+    SequenzerClass.pdf \
+    img/huellkurve.png
 
 win32 {
 INCLUDEPATH = C:\QtSDK\mingw\include\SDL
@@ -71,6 +72,7 @@ LIBS += -lSDL -lSDL_gfx
 
 RESOURCES += \
     res.qrc
+
 
 
 
