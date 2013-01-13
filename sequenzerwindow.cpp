@@ -86,6 +86,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setMaximum(MAX_PATTERN-1);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(203, 199, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV1StepPatternChange(int,int)));
         ui->StepTable->setCellWidget(i,0,spin1);
 
@@ -95,6 +96,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setValue(0);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(203, 199, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV1StepTransposeChange(int,int)));
         ui->StepTable->setCellWidget(i,1,spin1);
 
@@ -102,6 +104,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setMaximum(MAX_PATTERN-1);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(180, 180, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV2StepPatternChange(int,int)));
         ui->StepTable->setCellWidget(i,2,spin1);
 
@@ -111,6 +114,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setValue(0);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(180, 180, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV2StepTransposeChange(int,int)));
         ui->StepTable->setCellWidget(i,3,spin1);
 
@@ -118,6 +122,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setMaximum(MAX_PATTERN-1);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(200, 200, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV3StepPatternChange(int,int)));
         ui->StepTable->setCellWidget(i,4,spin1);
 
@@ -127,6 +132,7 @@ SequenzerWindow::SequenzerWindow(QWidget *parent, SequenzerClass *_seq) :
         spin1->setValue(0);
         spin1->setFrame(false);
         spin1->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        spin1->setStyleSheet("background-color: rgb(200, 200, 255);");
         connect(spin1,SIGNAL(ChangeValue(int,int)),this,SLOT(onV3StepTransposeChange(int,int)));
         ui->StepTable->setCellWidget(i,5,spin1);
     }

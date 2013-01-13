@@ -142,7 +142,6 @@ STEP* SequenzerClass::GetStepTablePointer()
 
 void SequenzerClass::Play()
 {
-    PushSIDStack(0,24,(ShadowIO[0][24] & 0xf0) | 15);
     SongPlay = true;
 }
 
@@ -320,6 +319,70 @@ void SequenzerClass::PlayTrack(unsigned short pattern_nr,char transpose, int sid
 
     unsigned char Note = Pattern[pattern_nr].Note[PatternPos];
     unsigned short SoundNr = Pattern[pattern_nr].SoundNr[PatternPos];
+
+    unsigned char EffektNr = Pattern[pattern_nr].EffektNr[PatternPos];
+    unsigned short EffektPara1 = Pattern[pattern_nr].EffektParameter1[PatternPos];
+
+    switch(EffektNr)
+    {
+    case 0:
+        /// Nichts tun
+        break;
+    case 1:
+        /// SetVolume
+        PushSIDStack(sid_nr,24,(ShadowIO[sid_nr][24] & 0xf0) | (EffektPara1 & 0x0f));
+        break;
+    case 2:
+        /// SetFilterFrequenz
+        EffektPara1 &= 0x7ff;
+        PushSIDStack(sid_nr,21,EffektPara1 & 7);
+        PushSIDStack(sid_nr,22,EffektPara1 >> 3);
+        break;
+    case 3:
+        /// FilterResonanz
+        EffektPara1 &= 0x0f;
+        PushSIDStack(sid_nr,23,(ShadowIO[sid_nr][23] & 0x0f) | (EffektPara1 & 0x0f)<<4);
+        break;
+    case 4:
+        /// FilterOn
+        EffektPara1 &= 0x03;
+
+        switch(EffektPara1)
+        {
+        case 0:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] | 1);
+            break;
+        case 1:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] | 2);
+            break;
+        case 2:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] | 4);
+            break;
+        }
+        break;
+    case 5:
+        /// FilterOff
+        EffektPara1 &= 0x03;
+
+        switch(EffektPara1)
+        {
+        case 0:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] & 254);
+            break;
+        case 1:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] & 253);
+            break;
+        case 2:
+            PushSIDStack(sid_nr,23,ShadowIO[sid_nr][23] & 251);
+            break;
+        }
+        break;
+    case 6:
+        /// Filtertyp
+        EffektPara1 &= 0x0f;
+        PushSIDStack(sid_nr,24,(ShadowIO[sid_nr][24] & 0x0f) | ((1<<EffektPara1)<<3)&0xf0);
+        break;
+    }
 
     if(Note == 0xff) return;
 

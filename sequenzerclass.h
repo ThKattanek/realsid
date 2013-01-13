@@ -102,6 +102,7 @@ private:
     void PushSIDStack(int sid_nr, unsigned char reg_adr, unsigned char reg_wert);
     unsigned short PullSIDStack(void);
     void SetSIDFrequenz(int sid_nr, int voice, unsigned short frequenz);
+    void SetSIDFilterFrequenz(int sid_nr, int voice, unsigned short frequenz);
     void SetSIDPulse(int sid_nr, int voice, unsigned short pulse);
     void NextBeat();
     void PlayTrack(unsigned short pattern_nr ,char transpose ,int sid_nr,int voice);
