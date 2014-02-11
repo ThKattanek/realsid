@@ -429,6 +429,7 @@ bool SequenzerClass::LoadSong(char *filename)
 
     if(0 != strcmp(Kennung,"reSID_SEQ"))
     {
+        fclose(file);
         return false;
     }
 

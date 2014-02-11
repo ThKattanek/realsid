@@ -45,7 +45,7 @@
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>180</height>
+              <height>200</height>
              </size>
             </property>
             <property name="statusTip">
@@ -74,7 +74,16 @@
            <string>Patternedit</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2">
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
@@ -153,17 +162,44 @@
            <property name="sizeConstraint">
             <enum>QLayout::SetDefaultConstraint</enum>
            </property>
-           <property name="margin">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
             <number>0</number>
            </property>
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_4">
-             <property name="margin">
+             <property name="leftMargin">
+              <number>2</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>2</number>
+             </property>
+             <property name="bottomMargin">
               <number>2</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>2</number>
+               </property>
+               <property name="topMargin">
+                <number>2</number>
+               </property>
+               <property name="rightMargin">
+                <number>2</number>
+               </property>
+               <property name="bottomMargin">
                 <number>2</number>
                </property>
                <item>
@@ -433,6 +469,9 @@
                  </property>
                 </widget>
                 <widget class="QWidget" name="widget" native="true">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="geometry">
                   <rect>
                    <x>15</x>
@@ -581,7 +620,7 @@
      <x>0</x>
      <y>0</y>
      <width>750</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
