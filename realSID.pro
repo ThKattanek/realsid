@@ -48,27 +48,33 @@ OTHER_FILES += \
     img/splash.png \
     SequenzerClass.odt \
     SequenzerClass.pdf \
-    img/huellkurve.png
+    img/huellkurve.png \
+    build_linux32.sh \
+    build_linux64.sh
 
-win32 {
-INCLUDEPATH = C:\QtSDK\mingw\include\SDL
-TARGET = start_win32
-DESTDIR = "bin"
-LIBS += -lmingw32 -lSDLmain -lSDL -lSDL_gfx
-}
-
-linux-g++{
-TARGET = start_linux32
-DESTDIR = "bin"
+linux-g++-32{
+DESTDIR = "bin/linux_32bit"
+TARGET = realsid
 LIBS += -lSDL -lSDL_gfx
 }
 
 linux-g++-64{
-INCLUDEPATH = /usr/include/SDL
-TARGET = start_linux64
-DESTDIR = "bin"
+TARGET = realsid
+DESTDIR = "bin/linux_64bit"
 LIBS += -lSDL -lSDL_gfx
 }
+
+win32-g++-cross{
+TARGET = realsid.exe
+DESTDIR = "bin/win_x32"
+LIBS += -lmingw32 -lSDLmain -lSDL -lSDL_gfx
+}
+
+win64-g++-cross{
+TARGET = realsid.exe
+DESTDIR = "bin/win_x64"
+LIBS += -lmingw32 -lSDLmain -lSDL -lSDL_gfx
+}    
 
 RESOURCES += \
     res.qrc
