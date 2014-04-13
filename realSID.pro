@@ -48,9 +48,7 @@ OTHER_FILES += \
     img/splash.png \
     SequenzerClass.odt \
     SequenzerClass.pdf \
-    img/huellkurve.png \
-    build_linux32.sh \
-    build_linux64.sh
+    img/huellkurve.png
 
 linux-g++-32{
 DESTDIR = "bin/linux_32bit"
