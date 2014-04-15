@@ -62,17 +62,11 @@ DESTDIR = "bin/linux_64bit"
 LIBS += -lSDL -lSDL_gfx
 }
 
-win32-g++-cross{
+win32-g++{
 TARGET = realsid.exe
 DESTDIR = "bin/win_x32"
 LIBS += -lmingw32 -lSDLmain -lSDL -lSDL_gfx
-}
-
-win64-g++-cross{
-TARGET = realsid.exe
-DESTDIR = "bin/win_x64"
-LIBS += -lmingw32 -lSDLmain -lSDL -lSDL_gfx
-}    
+}  
 
 RESOURCES += \
     res.qrc
