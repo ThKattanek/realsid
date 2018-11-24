@@ -290,6 +290,9 @@ if(WIN32)
     # Install Binary
     install(TARGETS ${PROJECT_NAME} DESTINATION ./)
     
+    # Install Demos
+    install(DIRECTORY "demos" DESTINATION ./)
+    
     # Sonstiges
     install(FILES "LICENSE" DESTINATION ./)
 else()
