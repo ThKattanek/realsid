@@ -1,5 +1,5 @@
 # realSID
-## This is a SID emulator with a simply sequenzer (The project was for the technician study)
+## This is a SID emulator with a simply sequenzer (The project was for my technician study)
 ### [Latest version here](https://github.com/ThKattanek/realsid/releases/latest)
 
 ## Execute under windows
