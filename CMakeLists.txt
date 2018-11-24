@@ -121,7 +121,7 @@ add_definitions("-DVERSION_STRING=\"${VERSION_STRING}\"")
 
 message(STATUS "Aktueller Git Hashcode : ${GIT_COMMIT_HASH}")
 message(STATUS "Aktueller Arbeitsbranch: ${GIT_BRANCH}")
-message(STATUS "Aktuelle V-SID Version : ${VERSION_STRING}")
+message(STATUS "Aktuelle realSID Version : ${VERSION_STRING}")
 
 ############## ARCHITEKTUR ERMITTELN ##############
 
