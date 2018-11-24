@@ -12,6 +12,7 @@ realsid
 ![Screenshot](screenshot.png)
 
 ## Used libraries
+* Qt4
 * SDL
 * SDL_gfx
 
