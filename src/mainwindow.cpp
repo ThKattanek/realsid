@@ -32,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowTitle(windowTitle() + " -  Version: " + VERSION_STRING);
+    
     int ret = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
     if(ret < 0)
     {
