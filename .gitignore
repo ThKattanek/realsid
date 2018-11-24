@@ -1,0 +1,8 @@
+*.qm 
+*.pro.user*
+*.directory
+*.txt.user
+build*
+install*
+public_release
+*.autosave
