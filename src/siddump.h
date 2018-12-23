@@ -49,6 +49,8 @@ private:
     int	  CycleCounter;
     unsigned char* Dump;
     int	DumpPos;
+    unsigned char Reg;
+    unsigned char RegWert;
 
 public:
     unsigned char RegOut;
